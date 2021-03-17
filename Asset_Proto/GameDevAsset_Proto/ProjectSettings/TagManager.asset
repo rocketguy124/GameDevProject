@@ -41,3 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 4234969409
+    locked: 0
+  - name: Breakables
+    uniqueID: 1038350247
+    locked: 0
+  - name: Projectiles
+    uniqueID: 3504205773
+    locked: 0
+  - name: Enemies
+    uniqueID: 2929453023
+    locked: 0
+  - name: Player
+    uniqueID: 2068837209
+    locked: 0

@@ -102,6 +102,7 @@ MonoBehaviour:
   theRB: {fileID: 0}
   ImpactFX: {fileID: 8217655504449971081, guid: 429a1f18ddbff664fb8b8a5559f86516,
     type: 3}
+  damageToGive: 50
 --- !u!61 &8184678293346252583
 BoxCollider2D:
   m_ObjectHideFlags: 0

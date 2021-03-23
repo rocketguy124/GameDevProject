@@ -10,6 +10,8 @@ public class PlayerProjectile : MonoBehaviour
 
     public GameObject ImpactFX;
 
+    public int damageToGive = 50;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,12 @@ public class PlayerProjectile : MonoBehaviour
     {
         Instantiate(ImpactFX, transform.position, transform.rotation);
         Destroy(gameObject);
+        if (collision.gameObject.tag == "Enemy")
+        {
+            //Debug.Log("In Trigger");
+            collision.GetComponent<EnemyController>().DamageEnemy(damageToGive);
+        }
+
     }
 
     private void OnBecameInvisible()

@@ -60,6 +60,16 @@ public class EnemyController : MonoBehaviour
         {
             enemyAnim.SetBool("isMoving", false);
         }
+
+        if (shouldShoot)
+        {
+            fireCounter -= Time.deltaTime;
+            if(fireCounter <= 0)
+            {
+                fireCounter = fireRate;
+                Instantiate(enemyProjectile, firePoint.position,  enemyProjectile.transform.rotation * Quaternion.Inverse(firePoint.rotation));
+            }
+        }
     }
 
     public void DamageEnemy(int amountToDeal)

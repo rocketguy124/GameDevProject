@@ -45,17 +45,17 @@ TagManager:
   - name: Ground
     uniqueID: 4234969409
     locked: 0
-  - name: Breakables
-    uniqueID: 1038350247
+  - name: Objects
+    uniqueID: 4207194763
     locked: 0
   - name: Pickups
     uniqueID: 3442288139
     locked: 0
-  - name: Projectiles
-    uniqueID: 3504205773
-    locked: 0
   - name: Enemies
     uniqueID: 2929453023
+    locked: 0
+  - name: Projectiles
+    uniqueID: 3504205773
     locked: 0
   - name: Player
     uniqueID: 2068837209

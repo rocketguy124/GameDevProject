@@ -12,7 +12,7 @@ public class PlayerHealthController : MonoBehaviour
 
     [Header("Invincibility")]
     public float invincLength;
-    private float invincCount;
+    public float invincCount;
 
     private void Awake()
     {
@@ -62,5 +62,12 @@ public class PlayerHealthController : MonoBehaviour
 
             UIController.instance.healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
         }
+    }
+    public void MakeInvincible(float timeAmount)
+    {
+        invincCount = timeAmount;
+        PlayerController.instance.bodySR.color = new Color(PlayerController.instance.bodySR.color.r, PlayerController.instance.bodySR.color.g, PlayerController.instance.bodySR.color.b, 0.5f); //Making Player transparent to show invincibility
+
+
     }
 }

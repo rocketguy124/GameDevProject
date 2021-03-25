@@ -12,7 +12,9 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D theRB;
     private float activeMovespeed;
     public float dodgeSpeed = 8f, dodgeLength = 0.5f, dodgeCooldown = 1f, dodgeInvincTime = 0.5f;
-    public float dodgeCounter, dodgeCooldownCounter;
+    private float dodgeCooldownCounter;
+    [HideInInspector]
+    public float dodgeCounter;
 
     [Header("Aiming")]
     public Transform staffArm;
@@ -94,6 +96,8 @@ public class PlayerController : MonoBehaviour
             {
                 activeMovespeed = dodgeSpeed;
                 dodgeCounter = dodgeLength;
+                bodyAnim.SetTrigger("Dodge");
+                PlayerHealthController.instance.MakeInvincible(dodgeInvincTime);
             }
         }
         if(dodgeCounter > 0)

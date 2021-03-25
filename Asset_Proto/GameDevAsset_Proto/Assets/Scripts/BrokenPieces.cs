@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class BrokenPieces : MonoBehaviour
 {
+    [Header("Piece Movement")]
     public float moveSpeed = 3f;
     private Vector3 moveDirection;
-
     public float decceleration = 5f;
-
     public float lifeTime = 3f;
-
+    [Header("Piece SR")]
     public SpriteRenderer theSR;
     public float fadeSpeed = 2.5f;
+
 
     // Start is called before the first frame update
     void Start()

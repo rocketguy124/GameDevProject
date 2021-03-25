@@ -30,6 +30,11 @@ public class EnemyController : MonoBehaviour
     public GameObject deathPoof;
     public GameObject hitFX;
 
+    [Header("Sound")]
+    public int enemyHitSound;
+    public int enemyDeathSound;
+    public int enemyShootSound;
+
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +70,7 @@ public class EnemyController : MonoBehaviour
                 {
                     fireCounter = fireRate;
                     Instantiate(enemyProjectile, firePoint.position, enemyProjectile.transform.rotation * Quaternion.Inverse(firePoint.rotation));
+                    AudioManager.instance.PlaySFX(enemyShootSound);
                 }
             }
         }
@@ -90,6 +96,8 @@ public class EnemyController : MonoBehaviour
         enemyHealth -= amountToDeal;
 
         Instantiate(hitFX, transform.position, transform.rotation);
+
+        AudioManager.instance.PlaySFX(enemyHitSound);
         //Debug.Log(enemyHealth);
         //Debug.Log(amountToDeal);
 
@@ -104,6 +112,7 @@ public class EnemyController : MonoBehaviour
 
             Instantiate(deathPoof, transform.position, transform.rotation); //Poof FX
             Instantiate(deathSplats[selectedSplat], transform.position, Quaternion.Euler(0f, 0f, rotation * 90)); // Random splatter with random rotation
+            AudioManager.instance.PlaySFX(enemyDeathSound);
         }
     }
 

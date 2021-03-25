@@ -11,6 +11,8 @@ public class PlayerProjectile : MonoBehaviour
     public GameObject ImpactFX;
 
     public int damageToGive = 50;
+    [Header("Sound")]
+    public int impactSound;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,7 @@ public class PlayerProjectile : MonoBehaviour
     {
         Instantiate(ImpactFX, transform.position, transform.rotation);
         Destroy(gameObject);
+        AudioManager.instance.PlaySFX(impactSound);
         if (collision.gameObject.tag == "Enemy")
         {
             //Debug.Log("In Trigger");

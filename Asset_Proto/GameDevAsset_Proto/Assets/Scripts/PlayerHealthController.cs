@@ -14,6 +14,10 @@ public class PlayerHealthController : MonoBehaviour
     public float invincLength;
     public float invincCount;
 
+    [Header("Sound")]
+    public int playerDeathSound;
+    public int playerHurtSound;
+
     private void Awake()
     {
         instance = this;
@@ -49,6 +53,8 @@ public class PlayerHealthController : MonoBehaviour
 
             currentHealth--;
 
+            AudioManager.instance.PlaySFX(playerHurtSound);
+
             invincCount = invincLength; //setting invincibility timer
 
             PlayerController.instance.bodySR.color = new Color(PlayerController.instance.bodySR.color.r, PlayerController.instance.bodySR.color.g, PlayerController.instance.bodySR.color.b, 0.5f); //Making Player transparent to show invincibility
@@ -57,6 +63,9 @@ public class PlayerHealthController : MonoBehaviour
                 PlayerController.instance.gameObject.SetActive(false);
 
                 UIController.instance.deathScreen.SetActive(true);
+
+                AudioManager.instance.PlaySFX(playerDeathSound);
+                AudioManager.instance.PlayGameoverMusic();
             }
             UIController.instance.healthSlider.value = currentHealth;
 
@@ -69,5 +78,16 @@ public class PlayerHealthController : MonoBehaviour
         PlayerController.instance.bodySR.color = new Color(PlayerController.instance.bodySR.color.r, PlayerController.instance.bodySR.color.g, PlayerController.instance.bodySR.color.b, 0.5f); //Making Player transparent to show invincibility
 
 
+    }
+    public void HealPlayer(int healAmount)
+    {
+        currentHealth += healAmount;
+        if(currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        UIController.instance.healthSlider.value = currentHealth;
+
+        UIController.instance.healthText.text = currentHealth.ToString() + " / " + maxHealth.ToString();
     }
 }

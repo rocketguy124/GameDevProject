@@ -31,6 +31,11 @@ public class PlayerController : MonoBehaviour
     public float timeBetweenShots;
     private float shotCounter;
 
+    [Header("Sound")]
+    public int playerDodgeSound;
+    public int playerHurtSound;
+    public int playerShootSound;
+
 
     private void Awake()
     {
@@ -78,6 +83,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Instantiate(projectileToFire, firePoint.transform.position, firePoint.transform.rotation);
+            AudioManager.instance.PlaySFX(playerShootSound);
             shotCounter = timeBetweenShots;
         }
         if (Input.GetMouseButton(0))
@@ -86,6 +92,7 @@ public class PlayerController : MonoBehaviour
             if(shotCounter <= 0)
             {
                 Instantiate(projectileToFire, firePoint.transform.position, firePoint.transform.rotation);
+                AudioManager.instance.PlaySFX(playerShootSound);
                 shotCounter = timeBetweenShots;
             }
         }
@@ -98,6 +105,7 @@ public class PlayerController : MonoBehaviour
                 dodgeCounter = dodgeLength;
                 bodyAnim.SetTrigger("Dodge");
                 PlayerHealthController.instance.MakeInvincible(dodgeInvincTime);
+                AudioManager.instance.PlaySFX(playerDodgeSound);
             }
         }
         if(dodgeCounter > 0)

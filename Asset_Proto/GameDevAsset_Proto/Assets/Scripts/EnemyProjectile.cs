@@ -8,6 +8,9 @@ public class EnemyProjectile : MonoBehaviour
     //public Rigidbody2D theRB;
 
     private Vector3 direction;
+    [Header("Sound")]
+    public int enemyProjectileImpactSound;
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +35,7 @@ public class EnemyProjectile : MonoBehaviour
         }
 
         Destroy(gameObject);
+        AudioManager.instance.PlaySFX(enemyProjectileImpactSound);
     }
     private void OnBecameInvisible()
     {

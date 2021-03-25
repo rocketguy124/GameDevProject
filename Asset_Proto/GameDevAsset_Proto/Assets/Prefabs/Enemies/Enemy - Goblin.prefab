@@ -115,6 +115,9 @@ MonoBehaviour:
   deathPoof: {fileID: 7540751393867592938, guid: f58f4ee55c9203d4d82007a81f4c4db0,
     type: 3}
   hitFX: {fileID: 8217655504449971081, guid: bf7c63e27203525479c38b9b86feeaec, type: 3}
+  enemyHitSound: 2
+  enemyDeathSound: 1
+  enemyShootSound: 13
 --- !u!1 &1027563318228314427
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8184678293346252580}
   m_Layer: 9
   m_Name: Player_WaterBolt
-  m_TagString: Untagged
+  m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -790761523
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -1090292184611082032, guid: 86853912ede3a7b4f882f4de488a3786,
     type: 3}
@@ -103,6 +103,7 @@ MonoBehaviour:
   ImpactFX: {fileID: 8217655504449971081, guid: 429a1f18ddbff664fb8b8a5559f86516,
     type: 3}
   damageToGive: 50
+  impactSound: 22
 --- !u!61 &8184678293346252583
 BoxCollider2D:
   m_ObjectHideFlags: 0

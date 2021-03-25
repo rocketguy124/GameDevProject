@@ -28,7 +28,7 @@ public class EnemyProjectile : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-
+            PlayerHealthController.instance.damagePlayer();
         }
 
         Destroy(gameObject);

@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
     [Header("Physics")]
     public Rigidbody2D theRB;
     public float moveSpeed;
+    public SpriteRenderer theBody;
 
     [Header("AI")]
     public float rangeToChase;
@@ -16,6 +17,7 @@ public class EnemyController : MonoBehaviour
     public Transform firePoint;
     public float fireRate;
     public float fireCounter;
+    public float shootRange = 5;
 
     [Header("Animation")]
     public Animator enemyAnim;
@@ -38,20 +40,41 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Movement
-        if (Vector3.Distance(transform.position, PlayerController.instance.transform.position) <= rangeToChase)
+        if (theBody.isVisible && PlayerController.instance.gameObject.activeInHierarchy)
         {
-            moveDirection = PlayerController.instance.transform.position - transform.position;
+            //Movement
+            if (Vector3.Distance(transform.position, PlayerController.instance.transform.position) <= rangeToChase)
+            {
+                moveDirection = PlayerController.instance.transform.position - transform.position;
+            }
+            else
+            {
+                moveDirection = Vector3.zero;
+            }
+
+
+            moveDirection.Normalize(); //MoveDirection Normalization
+            theRB.velocity = moveDirection * moveSpeed; // Velocity Setting
+
+
+            //AI should Shoot
+            if (shouldShoot && Vector3.Distance(PlayerController.instance.transform.position, transform.position) < shootRange)
+            {
+                fireCounter -= Time.deltaTime;
+                if (fireCounter <= 0)
+                {
+                    fireCounter = fireRate;
+                    Instantiate(enemyProjectile, firePoint.position, enemyProjectile.transform.rotation * Quaternion.Inverse(firePoint.rotation));
+                }
+            }
         }
         else
         {
-            moveDirection = Vector3.zero;
+            theRB.velocity = Vector2.zero;
         }
 
 
-        moveDirection.Normalize(); //MoveDirection Normalization
-        theRB.velocity = moveDirection * moveSpeed; // Velocity Setting
-
+        //Animation
         if (moveDirection != Vector3.zero)
         {
             enemyAnim.SetBool("isMoving", true);
@@ -59,16 +82,6 @@ public class EnemyController : MonoBehaviour
         else
         {
             enemyAnim.SetBool("isMoving", false);
-        }
-
-        if (shouldShoot)
-        {
-            fireCounter -= Time.deltaTime;
-            if(fireCounter <= 0)
-            {
-                fireCounter = fireRate;
-                Instantiate(enemyProjectile, firePoint.position,  enemyProjectile.transform.rotation * Quaternion.Inverse(firePoint.rotation));
-            }
         }
     }
 
@@ -90,7 +103,7 @@ public class EnemyController : MonoBehaviour
 
 
             Instantiate(deathPoof, transform.position, transform.rotation); //Poof FX
-            Instantiate(deathSplats[selectedSplat], transform.position, Quaternion.Euler(0f,0f, rotation * 90)); // Random splatter with random rotation
+            Instantiate(deathSplats[selectedSplat], transform.position, Quaternion.Euler(0f, 0f, rotation * 90)); // Random splatter with random rotation
         }
     }
 

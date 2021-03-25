@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     private Vector2 moveInput;
     public Rigidbody2D theRB;
+    private float activeMovespeed;
+    public float dodgeSpeed = 8f, dodgeLength = 0.5f, dodgeCooldown = 1f, dodgeInvincTime = 0.5f;
+    public float dodgeCounter, dodgeCooldownCounter;
 
     [Header("Aiming")]
     public Transform staffArm;
@@ -18,6 +21,7 @@ public class PlayerController : MonoBehaviour
     [Header("Animation")]
     public Animator bodyAnim;
     public Animator wholePlayerAnim;
+    public SpriteRenderer bodySR;
 
     [Header("Projectiles")]
     public GameObject projectileToFire;
@@ -35,6 +39,8 @@ public class PlayerController : MonoBehaviour
     {
         theRB = gameObject.GetComponent<Rigidbody2D>();
         theCam = Camera.main;
+
+        activeMovespeed = moveSpeed;
     }
 
     // Update is called once per frame
@@ -44,7 +50,7 @@ public class PlayerController : MonoBehaviour
         moveInput.y = Input.GetAxisRaw("Vertical");
         moveInput.Normalize();
 
-        theRB.velocity = moveInput * moveSpeed;
+        theRB.velocity = moveInput * activeMovespeed;
 
         Vector3 mousePosition = Input.mousePosition;
         Vector3 screenPoint = theCam.WorldToScreenPoint(transform.localPosition);
@@ -82,7 +88,27 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (dodgeCounter <= 0 && dodgeCooldownCounter <= 0)
+            {
+                activeMovespeed = dodgeSpeed;
+                dodgeCounter = dodgeLength;
+            }
+        }
+        if(dodgeCounter > 0)
+        {
+            dodgeCounter -= Time.deltaTime;
+            if(dodgeCounter <= 0)
+            {
+                activeMovespeed = moveSpeed;
+                dodgeCooldownCounter = dodgeCooldown;
+            }
+        }
+        if(dodgeCooldownCounter > 0)
+        {
+            dodgeCooldownCounter -= Time.deltaTime;
+        }
 
 
 

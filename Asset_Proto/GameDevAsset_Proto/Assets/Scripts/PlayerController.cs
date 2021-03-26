@@ -33,7 +33,6 @@ public class PlayerController : MonoBehaviour
 
     [Header("Sound")]
     public int playerDodgeSound;
-    public int playerHurtSound;
     public int playerShootSound;
 
 

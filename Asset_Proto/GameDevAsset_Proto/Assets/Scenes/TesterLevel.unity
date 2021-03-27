@@ -11046,7 +11046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waitToLoad: 4
-  nextLevel: TesterLevel
+  nextLevel: Victory
 --- !u!1 &1836639463
 GameObject:
   m_ObjectHideFlags: 0
@@ -14084,6 +14084,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7609719158623101289, guid: da9a050a0e5db694fa279feab41e6d05,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7609719159022200395, guid: da9a050a0e5db694fa279feab41e6d05,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7609719159253615417, guid: da9a050a0e5db694fa279feab41e6d05,
         type: 3}

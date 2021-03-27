@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class UIController : MonoBehaviour
     public Image fadeScreen;
     public float fadeSpeed;
     private bool fadingToBlack, fadingFromBlack;
+
+    [Header("SceneManagement")]
+    public string newGameScene;
+    public string mainMenuScene;
 
 
     private void Awake()
@@ -35,7 +40,7 @@ public class UIController : MonoBehaviour
         if (fadingFromBlack)
         {
             fadeScreen.color = new Color(fadeScreen.color.r, fadeScreen.color.g, fadeScreen.color.b, Mathf.MoveTowards(fadeScreen.color.a, 0f, fadeSpeed * Time.deltaTime));
-            if(fadeScreen.color.a == 0f)
+            if (fadeScreen.color.a == 0f)
             {
                 fadingFromBlack = false;
             }
@@ -43,7 +48,7 @@ public class UIController : MonoBehaviour
         if (fadingToBlack)
         {
             fadeScreen.color = new Color(fadeScreen.color.r, fadeScreen.color.g, fadeScreen.color.b, Mathf.MoveTowards(fadeScreen.color.a, 1f, fadeSpeed * Time.deltaTime));
-            if(fadeScreen.color.a == 0f)
+            if (fadeScreen.color.a == 0f)
             {
                 fadingToBlack = false;
             }
@@ -53,5 +58,13 @@ public class UIController : MonoBehaviour
     {
         fadingToBlack = true;
         fadingFromBlack = false;
+    }
+    public void newGame()
+    {
+        SceneManager.LoadScene(newGameScene);
+    }
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(mainMenuScene);
     }
 }

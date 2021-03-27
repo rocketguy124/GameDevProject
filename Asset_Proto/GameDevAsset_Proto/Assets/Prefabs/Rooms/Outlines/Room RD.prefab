@@ -159,13 +159,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a27e5e51b95f7ff4f86a37b7b730a276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  closeWhenEntered: 1
-  enemiesCleared: 1
+  closeWhenEntered: 0
   doors:
   - {fileID: 4870457370880047958}
   - {fileID: 728606430776205511}
-  enemies:
-  - {fileID: 0}
+  roomActive: 0
 --- !u!50 &849760597288037864
 Rigidbody2D:
   serializedVersion: 4
@@ -1263,7 +1261,7 @@ PrefabInstance:
     - target: {fileID: 5886057382753359255, guid: 500371192b669834b9592414bce874c2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.75
+      value: -5.5
       objectReference: {fileID: 0}
     - target: {fileID: 5886057382753359255, guid: 500371192b669834b9592414bce874c2,
         type: 3}

@@ -17,7 +17,7 @@ public class LevelGenerator : MonoBehaviour
     public Direction selectedDirection;
 
     public float xOffset = 22f;
-    public float yOffset = 13f;
+    public float yOffset = 12f;
 
     public LayerMask roomLayout;
 
@@ -28,6 +28,9 @@ public class LevelGenerator : MonoBehaviour
     public RoomPrefabs rooms;
 
     private List<GameObject> generatedOutlines = new List<GameObject>();
+
+    public RoomCenter centerStart, centerEnd;
+    public RoomCenter[] potentialCenters;
 
 
     // Start is called before the first frame update
@@ -66,6 +69,13 @@ public class LevelGenerator : MonoBehaviour
             CreateRoomOutline(room.transform.position);
         }
         CreateRoomOutline(endRoom.transform.position);
+
+        foreach(GameObject outline in generatedOutlines)
+        {
+            int centerSelect = Random.Range(0, potentialCenters.Length);
+
+            Instantiate(potentialCenters[centerSelect], outline.transform.position, transform.rotation).theRoom = outline.GetComponent<Room>();
+        }
     }
 
     // Update is called once per frame

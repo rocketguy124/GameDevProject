@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
+    public string nextLevelToLoad;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,11 @@ public class MainMenuManager : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("ExampleLevel");
+        SceneManager.LoadScene(nextLevelToLoad);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

@@ -154,7 +154,7 @@ public class LevelGenerator : MonoBehaviour
                 {
                     generatedOutlines.Add(Instantiate(rooms.doubleUpDown, roomPosition, transform.rotation));
                 }
-                if (roomBelow && roomLeft)
+                if (roomRight && roomLeft)
                 {
                     generatedOutlines.Add(Instantiate(rooms.doubleLeftRight, roomPosition, transform.rotation));
                 }

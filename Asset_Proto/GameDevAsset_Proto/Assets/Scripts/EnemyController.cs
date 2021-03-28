@@ -45,6 +45,11 @@ public class EnemyController : MonoBehaviour
     public int enemyDeathSound;
     public int enemyShootSound;
 
+    [Header("Drops")]
+    public bool shouldDrop;
+    public GameObject[] itemsToDrop;
+    public float dropPercent;
+
 
     // Start is called before the first frame update
     void Start()
@@ -174,6 +179,18 @@ public class EnemyController : MonoBehaviour
             Instantiate(deathPoof, transform.position, transform.rotation); //Poof FX
             Instantiate(deathSplats[selectedSplat], transform.position, Quaternion.Euler(0f, 0f, rotation * 90)); // Random splatter with random rotation
             AudioManager.instance.PlaySFX(enemyDeathSound);
+
+            //Dropping Items
+            if (shouldDrop)
+            {
+                float dropChance = Random.Range(0f, 100f);
+
+                if (dropChance <= dropPercent)
+                {
+                    int randomItem = Random.Range(0, itemsToDrop.Length);
+                    Instantiate(itemsToDrop[randomItem], transform.position, transform.rotation);
+                }
+            }
         }
     }
 

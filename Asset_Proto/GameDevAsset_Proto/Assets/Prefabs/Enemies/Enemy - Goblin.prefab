@@ -125,6 +125,13 @@ MonoBehaviour:
   enemyHitSound: 2
   enemyDeathSound: 1
   enemyShootSound: 13
+  shouldDrop: 1
+  itemsToDrop:
+  - {fileID: 4273809330255194509, guid: 570ac34b5c95cc347b779297d70a4f04, type: 3}
+  - {fileID: 4273809330255194509, guid: c27cd6921479d3d4c9d4a8ba2e1cb38d, type: 3}
+  - {fileID: 4273809330255194509, guid: c27cd6921479d3d4c9d4a8ba2e1cb38d, type: 3}
+  - {fileID: 4273809330255194509, guid: c27cd6921479d3d4c9d4a8ba2e1cb38d, type: 3}
+  dropPercent: 25
 --- !u!1 &1027563318228314427
 GameObject:
   m_ObjectHideFlags: 0

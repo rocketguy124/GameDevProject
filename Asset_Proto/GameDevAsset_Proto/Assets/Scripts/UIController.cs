@@ -13,6 +13,9 @@ public class UIController : MonoBehaviour
     public Text healthText;
     public GameObject deathScreen;
 
+    [Header("Gold")]
+    public Text goldText;
+
     [Header("Fade")]
     public Image fadeScreen;
     public float fadeSpeed;

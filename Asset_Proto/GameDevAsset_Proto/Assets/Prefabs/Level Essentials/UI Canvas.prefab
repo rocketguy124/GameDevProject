@@ -176,7 +176,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1306529145
 RectTransform:
   m_ObjectHideFlags: 0
@@ -791,6 +791,7 @@ MonoBehaviour:
   healthSlider: {fileID: 7609719157920857046}
   healthText: {fileID: 7609719158423779005}
   deathScreen: {fileID: 7609719158623101289}
+  goldText: {fileID: 7609719158826057743}
   fadeScreen: {fileID: 7609719159022200394}
   fadeSpeed: 1
   newGameScene: TesterLevel
@@ -2138,7 +2139,7 @@ PrefabInstance:
     - target: {fileID: 2077926563837080319, guid: aa5e6efc815cb6c408175148ad1e553b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: newGame
+      value: Resume
       objectReference: {fileID: 0}
     - target: {fileID: 2077926563837080319, guid: aa5e6efc815cb6c408175148ad1e553b,
         type: 3}

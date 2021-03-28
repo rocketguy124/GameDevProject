@@ -12,6 +12,8 @@ public class LevelManager : MonoBehaviour
 
     public bool isPaused;
 
+    public int currentGold;
+
     private void Awake()
     {
         instance = this;
@@ -20,6 +22,8 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1f;
+        UIController.instance.goldText.text = currentGold.ToString();
+
     }
 
     // Update is called once per frame
@@ -60,5 +64,20 @@ public class LevelManager : MonoBehaviour
 
             Time.timeScale = 1f;
         }
+    }
+    public void GetGold(int amount)
+    {
+        currentGold += amount;
+
+        UIController.instance.goldText.text = currentGold.ToString();
+    }
+    public void SpendGold(int amount)
+    {
+        currentGold -= amount;
+        if(currentGold < 0)
+        {
+            currentGold = 0;
+        }
+        UIController.instance.goldText.text = currentGold.ToString();
     }
 }

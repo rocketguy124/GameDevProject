@@ -10,13 +10,23 @@ public class EnemyController : MonoBehaviour
     public SpriteRenderer theBody;
 
     [Header("AI")]
+    public bool shouldChase;
     public float rangeToChase;
     private Vector3 moveDirection;
     public bool shouldShoot;
+    public bool shouldRunAway;
+    public float runAwayRange;
+    public bool shouldWander;
+    public float wanderMoveTime, wanderPauseTime;
+    private float wanderMoveCounter, wanderPauseCounter;
+    public bool shouldPatrol;
+    public Transform[] patrolPoints;
+    private int currentpatrolPoint;
+    private Vector3 wanderDirection;
     public GameObject enemyProjectile;
     public Transform firePoint;
     public float fireRate;
-    public float fireCounter;
+    private float fireCounter;
     public float shootRange = 5;
 
     [Header("Animation")]
@@ -40,6 +50,11 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         theRB = GetComponent<Rigidbody2D>();
+        if (shouldWander)
+        {
+            wanderPauseCounter = Random.Range(wanderPauseTime * 0.75f, wanderPauseTime * 1.25f);
+
+        }
     }
 
     // Update is called once per frame
@@ -47,15 +62,61 @@ public class EnemyController : MonoBehaviour
     {
         if (theBody.isVisible && PlayerController.instance.gameObject.activeInHierarchy)
         {
+            moveDirection = Vector3.zero;
+
             //Movement
-            if (Vector3.Distance(transform.position, PlayerController.instance.transform.position) <= rangeToChase)
+            if (Vector3.Distance(transform.position, PlayerController.instance.transform.position) <= rangeToChase && shouldChase)
             {
                 moveDirection = PlayerController.instance.transform.position - transform.position;
             }
             else
             {
-                moveDirection = Vector3.zero;
+                if (shouldWander)
+                {
+                    if (wanderMoveCounter > 0)
+                    {
+                        wanderMoveCounter -= Time.deltaTime;
+
+                        moveDirection = wanderDirection;
+
+                        if (wanderMoveCounter <= 0)
+                        {
+                            wanderPauseCounter = Random.Range(wanderPauseTime * 0.75f, wanderPauseTime * 1.25f);
+                        }
+                    }
+                    if (wanderPauseCounter > 0)
+                    {
+                        wanderPauseCounter -= Time.deltaTime;
+
+                        if (wanderPauseCounter <= 0)
+                        {
+                            wanderMoveCounter = Random.Range(wanderMoveTime * 0.75f, wanderMoveTime * 1.25f);
+
+                            wanderDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f);
+                        }
+                    }
+                }
+                if (shouldPatrol)
+                {
+                    moveDirection = patrolPoints[currentpatrolPoint].position - transform.position;
+
+                    if (Vector3.Distance(transform.position, patrolPoints[currentpatrolPoint].position) < 0.2f)
+                    {
+                        currentpatrolPoint++;
+                        if (currentpatrolPoint >= patrolPoints.Length)
+                        {
+                            currentpatrolPoint = 0;
+                        }
+                    }
+                }
             }
+
+            if (shouldRunAway && Vector3.Distance(transform.position, PlayerController.instance.transform.position) <= runAwayRange)
+            {
+                moveDirection = transform.position - PlayerController.instance.transform.position;
+
+            }
+
 
 
             moveDirection.Normalize(); //MoveDirection Normalization

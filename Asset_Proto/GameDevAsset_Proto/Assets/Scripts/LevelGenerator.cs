@@ -41,13 +41,13 @@ public class LevelGenerator : MonoBehaviour
         selectedDirection = (Direction)Random.Range(0, 4);
         MoveGenPoint();
 
-        for(int i = 0; i < distanceToExit; i++)
+        for (int i = 0; i < distanceToExit; i++)
         {
             GameObject newRoom = Instantiate(layoutRoom, generationPoint.position, generationPoint.rotation);
 
             layoutRoomObjects.Add(newRoom);
 
-            if(i + 1 == distanceToExit)
+            if (i + 1 == distanceToExit)
             {
                 newRoom.GetComponent<SpriteRenderer>().color = endColor;
                 layoutRoomObjects.RemoveAt(layoutRoomObjects.Count - 1);
@@ -57,35 +57,54 @@ public class LevelGenerator : MonoBehaviour
             selectedDirection = (Direction)Random.Range(0, 4);
             MoveGenPoint();
 
-            while(Physics2D.OverlapCircle(generationPoint.position, 0.2f, roomLayout))
+            while (Physics2D.OverlapCircle(generationPoint.position, 0.2f, roomLayout))
             {
                 MoveGenPoint(); //On overlap, moves same direction until no overlap (Removes chance of infinite moving between up and down / left and right)
             }
         }
         //creating Outlines
         CreateRoomOutline(Vector3.zero);
-        foreach(GameObject room in layoutRoomObjects)
+        foreach (GameObject room in layoutRoomObjects)
         {
             CreateRoomOutline(room.transform.position);
         }
         CreateRoomOutline(endRoom.transform.position);
 
-        foreach(GameObject outline in generatedOutlines)
+        foreach (GameObject outline in generatedOutlines)
         {
-            int centerSelect = Random.Range(0, potentialCenters.Length);
+            bool generateCenter = true;
+            if (outline.transform.position == Vector3.zero) //Starting Room Center Creation
+            {
+                Instantiate(centerStart, outline.transform.position, transform.rotation).theRoom = outline.GetComponent<Room>();
+                generateCenter = false;
+            }
 
-            Instantiate(potentialCenters[centerSelect], outline.transform.position, transform.rotation).theRoom = outline.GetComponent<Room>();
+            if (outline.transform.position == endRoom.transform.position)//Ending Room Center Creation
+            {
+                Instantiate(centerEnd, outline.transform.position, transform.rotation).theRoom = outline.GetComponent<Room>();
+                generateCenter = false;
+            }
+
+            if (generateCenter)//All other room generation
+            {
+                int centerSelect = Random.Range(0, potentialCenters.Length);
+
+                Instantiate(potentialCenters[centerSelect], outline.transform.position, transform.rotation).theRoom = outline.GetComponent<Room>();
+            }
+
         }
     }
 
     // Update is called once per frame
     void Update()
     {
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
+#endif
     public void MoveGenPoint()
     {
         switch (selectedDirection)

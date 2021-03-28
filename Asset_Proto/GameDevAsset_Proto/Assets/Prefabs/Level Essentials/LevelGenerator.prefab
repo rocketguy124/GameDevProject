@@ -93,6 +93,13 @@ MonoBehaviour:
   potentialCenters:
   - {fileID: 6064771441441850757, guid: 220e0c7a327bbcd48a65434f70c33350, type: 3}
   - {fileID: 5104809386219227916, guid: 69767af3123ab1c44b5b4decab8094ba, type: 3}
+  - {fileID: 7745986051260143710, guid: 0414ed02258398841af8d8074425e40a, type: 3}
+  - {fileID: 2859227849906836094, guid: b24395f9db78c0a46b55c2caaedfff54, type: 3}
+  - {fileID: 5267041037324766156, guid: dc733ef17fd708c40a8e90fc70c5a2ad, type: 3}
+  - {fileID: 1788349905595557921, guid: 8bf0b7c32d5e93140b6b4f30bf2bdcb0, type: 3}
+  - {fileID: 8535758818113474577, guid: d2ee58eeff0a2e74dbd5bd5347839c77, type: 3}
+  - {fileID: 793262811598836086, guid: 81c72154869cf9344b51c4e9a1e9b1c5, type: 3}
+  - {fileID: 8011243874280615069, guid: a344f9a0098af4e45b9897e8708d9da9, type: 3}
 --- !u!1 &5167505200830304930
 GameObject:
   m_ObjectHideFlags: 0

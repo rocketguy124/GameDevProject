@@ -97,13 +97,20 @@ MonoBehaviour:
   theRB: {fileID: 0}
   moveSpeed: 3
   theBody: {fileID: 1027563318228314406}
+  shouldChase: 1
   rangeToChase: 7
   shouldShoot: 1
+  shouldRunAway: 0
+  runAwayRange: 0
+  shouldWander: 0
+  wanderMoveTime: 0
+  wanderPauseTime: 0
+  shouldPatrol: 0
+  patrolPoints: []
   enemyProjectile: {fileID: 3223289917624973586, guid: 6c29f6ec063f6a44faa9234d396caa23,
     type: 3}
   firePoint: {fileID: 7897598641718015840}
   fireRate: 1
-  fireCounter: 0
   shootRange: 10
   enemyAnim: {fileID: 1027563318228314405}
   enemyHealth: 150

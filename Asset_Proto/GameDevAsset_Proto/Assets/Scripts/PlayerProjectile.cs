@@ -43,6 +43,6 @@ public class PlayerProjectile : MonoBehaviour
 
     private void OnBecameInvisible()
     {
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 1f);
     }
 }

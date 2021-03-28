@@ -27,15 +27,16 @@ public class PlayerController : MonoBehaviour
     public Animator wholePlayerAnim;
     public SpriteRenderer bodySR;
 
+    /*
     [Header("Projectiles")]
     public GameObject projectileToFire;
     public Transform firePoint;
     public float timeBetweenShots;
-    private float shotCounter;
+    private float shotCounter;*/
 
     [Header("Sound")]
     public int playerDodgeSound;
-    public int playerShootSound;
+    //public int playerShootSound;
 
 
     private void Awake()
@@ -82,7 +83,7 @@ public class PlayerController : MonoBehaviour
             float angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
             staffArm.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle - 90));
 
-
+            /*
             if (Input.GetMouseButtonDown(0))
             {
                 Instantiate(projectileToFire, firePoint.transform.position, firePoint.transform.rotation);
@@ -98,7 +99,7 @@ public class PlayerController : MonoBehaviour
                     AudioManager.instance.PlaySFX(playerShootSound);
                     shotCounter = timeBetweenShots;
                 }
-            }
+            }*/
 
             if (Input.GetKeyDown(KeyCode.Space))
             {

@@ -1740,7 +1740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e04b5cb61df3af4a825aff373d2b8cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevelToLoad: TesterLevel
+  nextLevelToLoad: LevelTest
 --- !u!1 &1049935547
 GameObject:
   m_ObjectHideFlags: 0
@@ -4080,7 +4080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e04b5cb61df3af4a825aff373d2b8cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevelToLoad: TesterLevel
+  nextLevelToLoad: LevelTest
 --- !u!224 &2135245580 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2077926563837080318, guid: aa5e6efc815cb6c408175148ad1e553b,

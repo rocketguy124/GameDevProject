@@ -10,6 +10,10 @@ public class Staff : MonoBehaviour
     public float timeBetweenShots;
     private float shotCounter;
 
+    [Header("Weapon Info")]
+    public string weaponName;
+    public GameObject staffUI;
+
     [Header("Sound")]
     public int playerShootSound;
 

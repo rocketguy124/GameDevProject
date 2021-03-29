@@ -27,6 +27,10 @@ public class PlayerController : MonoBehaviour
     public Animator wholePlayerAnim;
     public SpriteRenderer bodySR;
 
+    [Header("Weapons")]
+    public List<Staff> availableStaffs = new List<Staff>();
+    private int currentStaff;
+
     /*
     [Header("Projectiles")]
     public GameObject projectileToFire;
@@ -101,6 +105,23 @@ public class PlayerController : MonoBehaviour
                 }
             }*/
 
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                if(availableStaffs.Count > 0)
+                {
+                    currentStaff++;
+                    if(currentStaff >= availableStaffs.Count)
+                    {
+                        currentStaff = 0;
+                    }
+                    SwitchStaff();
+                }
+                else
+                {
+                    Debug.LogError("Player has no Weapon");
+                }
+            }
+
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 if (dodgeCounter <= 0 && dodgeCooldownCounter <= 0)
@@ -145,5 +166,14 @@ public class PlayerController : MonoBehaviour
             theRB.velocity = Vector2.zero;
             bodyAnim.SetBool("isMoving", false);
         }
+    }
+    public void SwitchStaff()
+    {
+        foreach(Staff theStaff in availableStaffs)
+        {
+            theStaff.gameObject.SetActive(false);
+        }
+
+        availableStaffs[currentStaff].gameObject.SetActive(true);
     }
 }

@@ -600,7 +600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
+  m_Color: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 0.5019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1380,7 +1380,9 @@ MonoBehaviour:
   goldText: {fileID: 7609719158826057743}
   fadeScreen: {fileID: 7609719159022200394}
   fadeSpeed: 1
-  newGameScene: TesterLevel
+  currentStaff: {fileID: 3196874042411982596}
+  staffText: {fileID: 5563052453797103768}
+  newGameScene: LevelTest
   mainMenuScene: MainMenu
   pauseMenu: {fileID: 1306529144}
   mapDisplay: {fileID: 556452804}

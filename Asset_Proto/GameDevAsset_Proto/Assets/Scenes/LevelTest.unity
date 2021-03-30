@@ -454,47 +454,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5167505200305074126, guid: bc262ad76aee4634ea79c72dae2b7574,
-        type: 3}
-      propertyPath: shopColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5167505200305074126, guid: bc262ad76aee4634ea79c72dae2b7574,
-        type: 3}
-      propertyPath: shopColor.g
-      value: 0.1745283
-      objectReference: {fileID: 0}
-    - target: {fileID: 5167505200305074126, guid: bc262ad76aee4634ea79c72dae2b7574,
-        type: 3}
-      propertyPath: shopColor.b
-      value: 0.8481774
-      objectReference: {fileID: 0}
-    - target: {fileID: 5167505200305074126, guid: bc262ad76aee4634ea79c72dae2b7574,
-        type: 3}
-      propertyPath: shopColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5167505200305074126, guid: bc262ad76aee4634ea79c72dae2b7574,
-        type: 3}
-      propertyPath: minDistanceToShop
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5167505200305074126, guid: bc262ad76aee4634ea79c72dae2b7574,
-        type: 3}
-      propertyPath: maxDistanceToShop
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5167505200305074126, guid: bc262ad76aee4634ea79c72dae2b7574,
-        type: 3}
-      propertyPath: includeShop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5167505200305074126, guid: bc262ad76aee4634ea79c72dae2b7574,
-        type: 3}
-      propertyPath: centerShop
-      value: 
-      objectReference: {fileID: 3731032589009030205, guid: 64948e5e3e3168644956e8b114bceba7,
-        type: 3}
     - target: {fileID: 5167505200305074127, guid: bc262ad76aee4634ea79c72dae2b7574,
         type: 3}
       propertyPath: m_Name
@@ -916,6 +875,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4843169518569846960, guid: fc1933ed09a421e458679db48809a296,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4843169518683124707, guid: fc1933ed09a421e458679db48809a296,
         type: 3}
       propertyPath: m_Name

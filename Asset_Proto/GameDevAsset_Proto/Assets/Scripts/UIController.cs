@@ -21,6 +21,10 @@ public class UIController : MonoBehaviour
     public float fadeSpeed;
     private bool fadingToBlack, fadingFromBlack;
 
+    [Header("WeaponElements")]
+    public Image currentStaff;
+    public Text staffText;
+
     [Header("SceneManagement")]
     public string newGameScene;
     public string mainMenuScene;

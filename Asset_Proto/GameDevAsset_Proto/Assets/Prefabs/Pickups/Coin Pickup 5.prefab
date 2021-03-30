@@ -112,6 +112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c9bf77b339f69240b5ca8995ca2ffc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 1
+  value: 5
   timeTillCollectable: 0.5
   goldCollectSound: 5

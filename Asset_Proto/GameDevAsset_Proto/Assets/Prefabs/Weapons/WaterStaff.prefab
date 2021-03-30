@@ -55,7 +55,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8526182620907061715}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -103,8 +103,7 @@ SpriteRenderer:
   m_SortingLayerID: 2068837209
   m_SortingLayer: 6
   m_SortingOrder: 1
-  m_Sprite: {fileID: 8440188011520932164, guid: a9fbdb1eecc24ca4db883062e9d7389c,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 74cf578acd9b97b4891d6231d3fffbbe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -131,4 +130,6 @@ MonoBehaviour:
     type: 3}
   firePoint: {fileID: 5788617283783967493}
   timeBetweenShots: 0.5
+  weaponName: WaterStaff
+  staffUI: {fileID: 21300000, guid: 74cf578acd9b97b4891d6231d3fffbbe, type: 3}
   playerShootSound: 12

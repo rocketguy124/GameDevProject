@@ -54,6 +54,9 @@ public class PlayerController : MonoBehaviour
         theCam = Camera.main;
 
         activeMovespeed = moveSpeed;
+
+        UIController.instance.currentStaff.sprite = availableStaffs[currentStaff].staffUI;
+        UIController.instance.staffText.text = availableStaffs[currentStaff].weaponName;
     }
 
     // Update is called once per frame
@@ -175,5 +178,8 @@ public class PlayerController : MonoBehaviour
         }
 
         availableStaffs[currentStaff].gameObject.SetActive(true);
+
+        UIController.instance.currentStaff.sprite = availableStaffs[currentStaff].staffUI;
+        UIController.instance.staffText.text = availableStaffs[currentStaff].weaponName;
     }
 }

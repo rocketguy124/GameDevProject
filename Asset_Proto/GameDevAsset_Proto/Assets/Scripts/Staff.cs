@@ -12,7 +12,7 @@ public class Staff : MonoBehaviour
 
     [Header("Weapon Info")]
     public string weaponName;
-    public GameObject staffUI;
+    public Sprite staffUI;
 
     [Header("Sound")]
     public int playerShootSound;

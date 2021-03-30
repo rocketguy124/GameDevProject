@@ -103,8 +103,7 @@ SpriteRenderer:
   m_SortingLayerID: 2068837209
   m_SortingLayer: 6
   m_SortingOrder: 1
-  m_Sprite: {fileID: 8440188011520932164, guid: a9fbdb1eecc24ca4db883062e9d7389c,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: aa5ffee270f252c4b89ca39fb9f897ea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -131,4 +130,6 @@ MonoBehaviour:
     type: 3}
   firePoint: {fileID: 8718554655558222799}
   timeBetweenShots: 0.75
+  weaponName: FireStaff
+  staffUI: {fileID: 21300000, guid: aa5ffee270f252c4b89ca39fb9f897ea, type: 3}
   playerShootSound: 12

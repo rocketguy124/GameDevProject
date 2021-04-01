@@ -6,33 +6,41 @@ using UnityEngine.SceneManagement;
 public class LevelGenerator : MonoBehaviour
 {
     public GameObject layoutRoom;
-
-    public Color startColor, endColor, shopColor;
+    [Header("Colors")]
+    public Color startColor, endColor, shopColor, chestColor;
 
     public int distanceToExit;
+    [Header("Shop Room")]
     public bool includeShop;
     public int minDistanceToShop, maxDistanceToShop;
 
+    [Header("Chest Room")]
+    public bool includeChest;
+    public int minDistanceToChest, maxDistanceToChest;
 
+    [Header("Room Generation Direction")]
     public Transform generationPoint;
+
 
     public enum Direction { up, right, down, left }; //Clockwise direcitons
     public Direction selectedDirection;
-
+    [Header("Offsets")]
     public float xOffset = 22f;
     public float yOffset = 12f;
 
+    [Header("Room Layouts")]
     public LayerMask roomLayout;
 
-    private GameObject endRoom, shopRoom;
+    private GameObject endRoom, shopRoom, chestRoom;
 
     private List<GameObject> layoutRoomObjects = new List<GameObject>();
 
     public RoomPrefabs rooms;
 
     private List<GameObject> generatedOutlines = new List<GameObject>();
-
-    public RoomCenter centerStart, centerEnd, centerShop;
+    [Header("Specific Centers")]
+    public RoomCenter centerStart, centerEnd, centerShop, centerChest;
+    [Header("Potential Rooms")]
     public RoomCenter[] potentialCenters;
 
 
@@ -74,6 +82,14 @@ public class LevelGenerator : MonoBehaviour
             shopRoom.GetComponent<SpriteRenderer>().color = shopColor;
         }
 
+        if (includeChest)
+        {
+            int chestSelector = Random.Range(minDistanceToChest, maxDistanceToChest + 1);
+            chestRoom = layoutRoomObjects[chestSelector];
+            layoutRoomObjects.RemoveAt(chestSelector);
+            chestRoom.GetComponent<SpriteRenderer>().color = chestColor;
+        }
+
         //creating Outlines
         CreateRoomOutline(Vector3.zero);
         foreach (GameObject room in layoutRoomObjects)
@@ -84,6 +100,10 @@ public class LevelGenerator : MonoBehaviour
         if (includeShop)
         {
             CreateRoomOutline(shopRoom.transform.position);
+        }
+        if (includeChest)
+        {
+            CreateRoomOutline(chestRoom.transform.position);
         }
 
         foreach (GameObject outline in generatedOutlines)
@@ -106,6 +126,15 @@ public class LevelGenerator : MonoBehaviour
                 if (outline.transform.position == shopRoom.transform.position)
                 {
                     Instantiate(centerShop, outline.transform.position, transform.rotation).theRoom = outline.GetComponent<Room>();
+                    generateCenter = false;
+                }
+            }
+
+            if (includeChest)//Shop Room Center Creation
+            {
+                if (outline.transform.position == chestRoom.transform.position)
+                {
+                    Instantiate(centerChest, outline.transform.position, transform.rotation).theRoom = outline.GetComponent<Room>();
                     generateCenter = false;
                 }
             }

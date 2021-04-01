@@ -29,7 +29,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Weapons")]
     public List<Staff> availableStaffs = new List<Staff>();
-    private int currentStaff;
+    [HideInInspector]
+    public int currentStaff;
 
     /*
     [Header("Projectiles")]

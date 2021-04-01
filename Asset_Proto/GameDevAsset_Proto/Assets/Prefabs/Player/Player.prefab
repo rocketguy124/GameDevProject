@@ -499,12 +499,9 @@ MonoBehaviour:
   bodyAnim: {fileID: 8723573962489917730}
   wholePlayerAnim: {fileID: 8723573963923302103}
   bodySR: {fileID: 8723573962489917733}
-  projectileToFire: {fileID: 8184678293346252576, guid: 4f3df19ca59b4af4aa0f325c64e2870f,
-    type: 3}
-  firePoint: {fileID: 0}
-  timeBetweenShots: 0.2
+  availableStaffs:
+  - {fileID: 5066373498536672959}
   playerDodgeSound: 8
-  playerShootSound: 12
 --- !u!50 &8723573963923302099
 Rigidbody2D:
   serializedVersion: 4
@@ -687,3 +684,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5089146222405244802}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5066373498536672959 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 67299303852828989, guid: 67c16847c0d760440b06ffbfe1ddaf9a,
+    type: 3}
+  m_PrefabInstance: {fileID: 5089146222405244802}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ecec2aa074d8144a0f4f7d092ddaaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

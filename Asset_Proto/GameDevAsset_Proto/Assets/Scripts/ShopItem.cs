@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopItem : MonoBehaviour
 {
@@ -17,10 +18,23 @@ public class ShopItem : MonoBehaviour
     public int buyItemSound;
     public int cantBuyItemSound;
 
+    public Staff[] potentialStaffs;
+    private Staff theStaff;
+    public SpriteRenderer staffSprite;
+    public Text informationText;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (isWeapon)
+        {
+            int staffSelect = Random.Range(0, potentialStaffs.Length);
+            theStaff = potentialStaffs[staffSelect];
+
+            staffSprite.sprite = theStaff.shopSprite;
+            informationText.text = "Buy " + theStaff.weaponName + "\n - " + theStaff.weaponCost.ToString() + " - ";
+            itemCost = theStaff.weaponCost;
+        }
     }
 
     // Update is called once per frame
@@ -42,6 +56,18 @@ public class ShopItem : MonoBehaviour
                     if (isHealthUpgrade)
                     {
                         PlayerHealthController.instance.IncreaseMaxHealth(healthUpgradeAmount);
+                    }
+                    if (isWeapon)
+                    {
+                        Staff staffClone = Instantiate(theStaff);
+                        staffClone.transform.parent = PlayerController.instance.staffArm; // make the clone a child of the rotate point
+                        staffClone.transform.position = PlayerController.instance.staffArm.position;
+                        staffClone.transform.localRotation = Quaternion.Euler(Vector3.zero);
+                        staffClone.transform.localScale = new Vector3(1f, 1f, 1f); //Weird scaling bug
+
+                        PlayerController.instance.availableStaffs.Add(staffClone);
+                        PlayerController.instance.currentStaff = PlayerController.instance.availableStaffs.Count - 1;
+                        PlayerController.instance.SwitchStaff();
                     }
 
                     gameObject.SetActive(false); //remove item after purchase

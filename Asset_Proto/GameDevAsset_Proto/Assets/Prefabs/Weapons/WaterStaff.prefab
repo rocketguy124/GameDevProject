@@ -132,4 +132,6 @@ MonoBehaviour:
   timeBetweenShots: 0.5
   weaponName: WaterStaff
   staffUI: {fileID: 21300000, guid: 74cf578acd9b97b4891d6231d3fffbbe, type: 3}
+  weaponCost: 35
+  shopSprite: {fileID: 21300000, guid: 74cf578acd9b97b4891d6231d3fffbbe, type: 3}
   playerShootSound: 12

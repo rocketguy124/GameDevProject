@@ -1382,7 +1382,7 @@ MonoBehaviour:
   fadeSpeed: 1
   currentStaff: {fileID: 3196874042411982596}
   staffText: {fileID: 5563052453797103768}
-  newGameScene: LevelTest
+  newGameScene: Level1Floor1
   mainMenuScene: MainMenu
   pauseMenu: {fileID: 1306529144}
   mapDisplay: {fileID: 556452804}

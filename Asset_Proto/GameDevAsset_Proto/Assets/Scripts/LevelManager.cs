@@ -14,6 +14,8 @@ public class LevelManager : MonoBehaviour
 
     public int currentGold;
 
+    public Transform startPoint;
+
     private void Awake()
     {
         instance = this;
@@ -21,6 +23,10 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerController.instance.transform.position = startPoint.position;
+        PlayerController.instance.canMove = true;
+
+        currentGold = CharacterTracker.instance.currentGold;
         Time.timeScale = 1f;
         UIController.instance.goldText.text = currentGold.ToString();
 
@@ -44,6 +50,10 @@ public class LevelManager : MonoBehaviour
         UIController.instance.StartFadeToBlack();
 
         yield return new WaitForSeconds(waitToLoad);
+
+        CharacterTracker.instance.currentGold = currentGold;
+        CharacterTracker.instance.currentHealth = PlayerHealthController.instance.currentHealth;
+        CharacterTracker.instance.maxHealth = PlayerHealthController.instance.maxHealth;
 
         SceneManager.LoadScene(nextLevel);
     }

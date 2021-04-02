@@ -40,6 +40,9 @@ public class UIController : MonoBehaviour
     {
         fadingFromBlack = true;
         fadingToBlack = false;
+
+        currentStaff.sprite = PlayerController.instance.availableStaffs[PlayerController.instance.currentStaff].staffUI;
+        staffText.text = PlayerController.instance.availableStaffs[PlayerController.instance.currentStaff].weaponName;
     }
 
     // Update is called once per frame
@@ -71,12 +74,15 @@ public class UIController : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(newGameScene);
+        Destroy(PlayerController.instance.gameObject);
     }
     public void ReturnToMainMenu()
     {
         Time.timeScale = 1f;
 
         SceneManager.LoadScene(mainMenuScene);
+        Destroy(PlayerController.instance.gameObject);
+
     }
     public void Resume()
     {

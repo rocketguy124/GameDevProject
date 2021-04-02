@@ -14,7 +14,7 @@ public class VictoryScreen : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1f;
-
+        Destroy(PlayerController.instance.gameObject);
     }
 
     // Update is called once per frame

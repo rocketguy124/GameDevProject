@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Aiming")]
     public Transform staffArm;
-    private Camera theCam;
+    //private Camera theCam;
 
     [Header("Animation")]
     public Animator bodyAnim;
@@ -47,12 +47,13 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        DontDestroyOnLoad(gameObject);
     }
     // Start is called before the first frame update
     void Start()
     {
         theRB = gameObject.GetComponent<Rigidbody2D>();
-        theCam = Camera.main;
+        //theCam = Camera.main;
 
         activeMovespeed = moveSpeed;
 
@@ -72,7 +73,7 @@ public class PlayerController : MonoBehaviour
             theRB.velocity = moveInput * activeMovespeed;
 
             Vector3 mousePosition = Input.mousePosition;
-            Vector3 screenPoint = theCam.WorldToScreenPoint(transform.localPosition);
+            Vector3 screenPoint = CameraController.instance.mainCam.WorldToScreenPoint(transform.localPosition);
 
             //Flipping player and staff based on aim
             if (mousePosition.x < screenPoint.x)

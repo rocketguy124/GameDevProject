@@ -35,8 +35,12 @@ public class PlayerProjectile : MonoBehaviour
         AudioManager.instance.PlaySFX(impactSound);
         if (collision.gameObject.tag == "Enemy")
         {
-            //Debug.Log("In Trigger");
             collision.GetComponent<EnemyController>().DamageEnemy(damageToGive);
+        }
+        if (collision.gameObject.tag == "Boss")
+        {
+            BossController.instance.TakeDamage(damageToGive);
+            Instantiate(BossController.instance.hitFX, transform.position, transform.rotation);
         }
 
     }

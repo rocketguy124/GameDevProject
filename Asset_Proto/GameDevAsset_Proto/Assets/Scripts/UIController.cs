@@ -30,6 +30,10 @@ public class UIController : MonoBehaviour
     public string mainMenuScene;
     public GameObject pauseMenu, mapDisplay, fullmapText;
 
+    [Header("Boss")]
+    public Slider bossHealthBar;
+
+
 
     private void Awake()
     {

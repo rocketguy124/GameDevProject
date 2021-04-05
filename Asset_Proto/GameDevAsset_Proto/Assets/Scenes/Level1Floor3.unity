@@ -485,6 +485,7 @@ MonoBehaviour:
   target: {fileID: 0}
   mainCam: {fileID: 1681528890}
   bigMapCam: {fileID: 577060970}
+  isBossRoom: 0
 --- !u!1001 &4843169517950162281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -565,7 +566,7 @@ PrefabInstance:
     - target: {fileID: 4843169518683124711, guid: fc1933ed09a421e458679db48809a296,
         type: 3}
       propertyPath: nextLevel
-      value: Victory
+      value: Boss1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc1933ed09a421e458679db48809a296, type: 3}

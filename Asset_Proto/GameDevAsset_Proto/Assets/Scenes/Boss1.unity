@@ -7104,7 +7104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 260900260471a99429c041456f86825e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 200
+  currentHealth: 500
   deathFX: {fileID: 4715327413259860823, guid: 9423933ea33e8b94b9abf409f895a63c, type: 3}
   levelExit: {fileID: 783490844}
   hitFX: {fileID: 8217655504449971081, guid: bf7c63e27203525479c38b9b86feeaec, type: 3}
@@ -7357,6 +7357,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 556452804, guid: da9a050a0e5db694fa279feab41e6d05, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4916332895044490869, guid: da9a050a0e5db694fa279feab41e6d05,
         type: 3}
       propertyPath: m_AnchorMin.x

@@ -222,8 +222,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 5
-  maxHealth: 7
-  currentGold: 4
+  maxHealth: 5
+  currentGold: 0
 --- !u!4 &466976386
 Transform:
   m_ObjectHideFlags: 0
@@ -575,6 +575,7 @@ MonoBehaviour:
   target: {fileID: 0}
   mainCam: {fileID: 1681528890}
   bigMapCam: {fileID: 577060970}
+  isBossRoom: 0
 --- !u!1001 &4843169517950162281
 PrefabInstance:
   m_ObjectHideFlags: 0

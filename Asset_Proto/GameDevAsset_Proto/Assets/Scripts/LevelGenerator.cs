@@ -157,8 +157,9 @@ public class LevelGenerator : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-    }
 #endif
+    }
+
     public void MoveGenPoint()
     {
         switch (selectedDirection)

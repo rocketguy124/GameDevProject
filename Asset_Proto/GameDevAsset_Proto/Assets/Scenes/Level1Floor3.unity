@@ -481,7 +481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97165787ab0394946b903e247c307e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionSpeed: 30
+  transitionSpeed: 50
   target: {fileID: 0}
   mainCam: {fileID: 1681528890}
   bigMapCam: {fileID: 577060970}

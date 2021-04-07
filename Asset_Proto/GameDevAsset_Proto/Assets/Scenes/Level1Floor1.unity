@@ -571,7 +571,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97165787ab0394946b903e247c307e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionSpeed: 30
+  transitionSpeed: 50
   target: {fileID: 0}
   mainCam: {fileID: 1681528890}
   bigMapCam: {fileID: 577060970}
@@ -768,6 +768,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7609719159253615417, guid: da9a050a0e5db694fa279feab41e6d05,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400435314608024322, guid: da9a050a0e5db694fa279feab41e6d05,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400435314608024322, guid: da9a050a0e5db694fa279feab41e6d05,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

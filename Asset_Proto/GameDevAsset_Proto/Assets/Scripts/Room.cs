@@ -40,6 +40,9 @@ public class Room : MonoBehaviour
         if(collision.tag == "Player")
         {
             CameraController.instance.ChangeCameraTarget(transform);
+            PlayerController.instance.dodgeCounter = PlayerController.instance.dodgeLength;
+            PlayerHealthController.instance.MakeInvincible(1f);
+
 
             if (closeWhenEntered)
             {

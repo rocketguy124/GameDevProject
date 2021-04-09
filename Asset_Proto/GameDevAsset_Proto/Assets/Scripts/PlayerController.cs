@@ -32,6 +32,10 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public int currentStaff;
 
+    [Header("Inventory")]
+    private Inventory inventory;
+    [SerializeField] private UIInventory uiInventory;
+
     /*
     [Header("Projectiles")]
     public GameObject projectileToFire;
@@ -48,6 +52,11 @@ public class PlayerController : MonoBehaviour
     {
         instance = this;
         DontDestroyOnLoad(gameObject);
+
+        inventory = new Inventory();
+        uiInventory.SetInventory(inventory);
+
+        
     }
     // Start is called before the first frame update
     void Start()
@@ -183,5 +192,15 @@ public class PlayerController : MonoBehaviour
 
         UIController.instance.currentStaff.sprite = availableStaffs[currentStaff].staffUI;
         UIController.instance.staffText.text = availableStaffs[currentStaff].weaponName;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        ItemWorld itemWorld = collision.GetComponent<ItemWorld>();
+        if(itemWorld != null)
+        {
+            inventory.AddItem(itemWorld.GetItem());
+            itemWorld.DestroySelf();
+        }
     }
 }

@@ -159,7 +159,7 @@ public class PlayerController : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.B))
             {
-                if(InvButtonCounter <= 0)
+                if(InvButtonCounter <= 0 && InvButtonCDCounter <= 0)
                 {
                     if (Inv_Out)
                     {
@@ -170,17 +170,20 @@ public class PlayerController : MonoBehaviour
                         LeanTween.moveLocalX(UIInventory, 1255f, 0.5f).setOnComplete(InventoryMoveComplete);
                     }
                 }
-                if (InvButtonCounter > 0) {
-                    InvButtonCounter -= Time.deltaTime;
-                    if(InvButtonCounter <= 0)
-                    {
 
-                    }
-                }
-                InvButtonCounter = InvButtonCD;
-                
-                
                 // UIInventory.transform.position = Vector3.MoveTowards(transform.position, new Vector3(UIInventory_In.position.x, UIInventory_In.position.y, -10f), 50 * Time.deltaTime);
+            }
+            if (InvButtonCounter > 0)
+            {
+                InvButtonCounter -= Time.deltaTime;
+                if (InvButtonCounter <= 0)
+                {
+                    InvButtonCDCounter = InvButtonCD;
+                }
+            }
+            if(InvButtonCDCounter > 0)
+            {
+                InvButtonCDCounter -= Time.deltaTime;
             }
             if (dodgeCounter > 0)
             {

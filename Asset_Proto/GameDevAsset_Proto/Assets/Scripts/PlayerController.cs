@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +18,9 @@ public class PlayerController : MonoBehaviour
     private float dodgeCooldownCounter;
     [HideInInspector]
     public float dodgeCounter;
+    public float speedBoostCounter;
+    public float speedBoostLength = 2f;
+    public float speedBoostSpeed = 8f;
 
     [Header("Aiming")]
     public Transform staffArm;
@@ -53,8 +57,7 @@ public class PlayerController : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(gameObject);
 
-        inventory = new Inventory();
-        uiInventory.SetInventory(inventory);
+       
 
         
     }
@@ -68,6 +71,9 @@ public class PlayerController : MonoBehaviour
 
         UIController.instance.currentStaff.sprite = availableStaffs[currentStaff].staffUI;
         UIController.instance.staffText.text = availableStaffs[currentStaff].weaponName;
+
+        inventory = new Inventory(UseItem);
+        uiInventory.SetInventory(inventory);
     }
 
     // Update is called once per frame
@@ -161,6 +167,16 @@ public class PlayerController : MonoBehaviour
                 dodgeCooldownCounter -= Time.deltaTime;
             }
 
+            if (speedBoostCounter > 0)
+            {
+                activeMovespeed = speedBoostSpeed;
+                speedBoostCounter -= Time.deltaTime;
+                if (speedBoostCounter <= 0)
+                {
+                    activeMovespeed = moveSpeed;
+                }
+            }
+
 
 
 
@@ -203,4 +219,32 @@ public class PlayerController : MonoBehaviour
             itemWorld.DestroySelf();
         }
     }
+
+    private void UseItem(Item item)
+    {
+        switch (item.itemType)
+        {
+            case Item.ItemType.HealthPotion:
+                PlayerHealthController.instance.HealPlayer(5);
+                inventory.RemoveItem(new Item { itemType = Item.ItemType.HealthPotion, amount = 1 });
+                break;
+
+            case Item.ItemType.MajorHealthPotion:
+                PlayerHealthController.instance.HealPlayer(PlayerHealthController.instance.maxHealth);
+                inventory.RemoveItem(new Item { itemType = Item.ItemType.MajorHealthPotion, amount = 1 });
+                break;
+
+            case Item.ItemType.SpeedPotion:
+                speedBoostCounter = 2f;
+                inventory.RemoveItem(new Item { itemType = Item.ItemType.SpeedPotion, amount = 1 });
+                break;
+
+            case Item.ItemType.InvincibilityPotion:
+                PlayerHealthController.instance.MakeInvincible(2f);
+                inventory.RemoveItem(new Item { itemType = Item.ItemType.InvincibilityPotion, amount = 1 });
+                break;
+        }
+    }
+
+
 }

@@ -8,9 +8,11 @@ public class Inventory
 
     public event EventHandler OnItemListChanged;
     private List<Item> itemList;
+    private Action<Item> useItemAction;
 
-    public Inventory()
+    public Inventory(Action<Item> useItemAction)
     {
+        this.useItemAction = useItemAction;
         itemList = new List<Item>();
 
         AddItem(new Item { itemType = Item.ItemType.HealthPotion, amount = 1 });
@@ -40,6 +42,34 @@ public class Inventory
         else { itemList.Add(item); }
         
         OnItemListChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void RemoveItem(Item item)
+    {
+        if (item.IsStackable())
+        {
+            Item itemIninventory = null;
+            foreach (Item inventoryItem in itemList)
+            {
+                if (inventoryItem.itemType == item.itemType)
+                {
+                    inventoryItem.amount -= item.amount;
+                    itemIninventory = inventoryItem;
+                }
+            }
+            if (itemIninventory != null && itemIninventory.amount <= 0)
+            {
+                itemList.Remove(itemIninventory);
+            }
+        }
+        else { itemList.Remove(item); }
+
+        OnItemListChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void UseItem(Item item)
+    {
+        useItemAction(item);
     }
 
     public List<Item> GetItemList()

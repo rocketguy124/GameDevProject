@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using CodeMonkey.Utils;
 
 public class UIInventory : MonoBehaviour
 {
@@ -45,6 +47,14 @@ public class UIInventory : MonoBehaviour
             RectTransform itemSlotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
             itemSlotRectTransform.gameObject.SetActive(true);
 
+            itemSlotRectTransform.GetComponent<Button_UI>().ClickFunc = () =>
+            {
+                inventory.UseItem(item);
+                //Item duplicateItem = new Item { itemType = item.itemType, amount = item.amount };
+                //inventory.RemoveItem(item);
+                
+                
+            };
             itemSlotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);
             Image image = itemSlotRectTransform.Find("Image").GetComponent<Image>();
             image.sprite = item.GetSprite();

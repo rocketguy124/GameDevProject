@@ -18,6 +18,7 @@ public class Inventory
         AddItem(new Item { itemType = Item.ItemType.HealthPotion, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.MajorHealthPotion, amount = 1 });
         AddItem(new Item { itemType = Item.ItemType.SpeedPotion, amount = 1 });
+        AddItem(new Item { itemType = Item.ItemType.InvincibilityPotion, amount = 1 });
         Debug.Log(itemList.Count);
     }
 

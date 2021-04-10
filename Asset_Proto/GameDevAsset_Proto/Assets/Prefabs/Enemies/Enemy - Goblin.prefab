@@ -131,7 +131,9 @@ MonoBehaviour:
   - {fileID: 4273809330255194509, guid: c27cd6921479d3d4c9d4a8ba2e1cb38d, type: 3}
   - {fileID: 4273809330255194509, guid: c27cd6921479d3d4c9d4a8ba2e1cb38d, type: 3}
   - {fileID: 4273809330255194509, guid: c27cd6921479d3d4c9d4a8ba2e1cb38d, type: 3}
-  dropPercent: 25
+  - {fileID: 7196008043870155013, guid: 241a0c89af8ecb547bd600b0581731db, type: 3}
+  - {fileID: 8279127275822278193, guid: aa99c603a74d15c4dbade66c2c447083, type: 3}
+  dropPercent: 20
 --- !u!1 &1027563318228314427
 GameObject:
   m_ObjectHideFlags: 0

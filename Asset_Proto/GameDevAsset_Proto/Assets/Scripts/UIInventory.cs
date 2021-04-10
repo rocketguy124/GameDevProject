@@ -16,6 +16,7 @@ public class UIInventory : MonoBehaviour
     {
         itemSlotContainer = transform.Find("itemSlotContainer");
         itemSlotTemplate = itemSlotContainer.Find("itemSlotTemplate");
+
     }
 
 

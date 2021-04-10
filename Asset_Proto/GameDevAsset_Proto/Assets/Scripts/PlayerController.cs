@@ -41,6 +41,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private UIInventory uiInventory;
     public GameObject UIInventory;
     public Transform UIInventory_In, UIInventory_Out;
+    private bool Inv_In, Inv_Out;
+    public float InvButtonCD = 0.5f;
+    public float InvButtonCDCounter;
+    public float InvButtonCounter;
 
     /*
     [Header("Projectiles")]
@@ -57,18 +61,16 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        DontDestroyOnLoad(gameObject);
-
-       
-
-        
+        DontDestroyOnLoad(gameObject); 
     }
+
     // Start is called before the first frame update
     void Start()
     {
         theRB = gameObject.GetComponent<Rigidbody2D>();
         //theCam = Camera.main;
-
+        Inv_Out = true;
+        InvButtonCD = 1f;
         activeMovespeed = moveSpeed;
 
         UIController.instance.currentStaff.sprite = availableStaffs[currentStaff].staffUI;
@@ -157,7 +159,28 @@ public class PlayerController : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.B))
             {
-                UIInventory.transform.position = Vector3.MoveTowards(transform.position, new Vector3(UIInventory_In.position.x, UIInventory_In.position.y, -10f), 50 * Time.deltaTime);
+                if(InvButtonCounter <= 0)
+                {
+                    if (Inv_Out)
+                    {
+                        LeanTween.moveLocalX(UIInventory, 533f, 0.5f).setOnComplete(InventoryMoveComplete);
+                    }
+                    if (!Inv_Out)
+                    {
+                        LeanTween.moveLocalX(UIInventory, 1255f, 0.5f).setOnComplete(InventoryMoveComplete);
+                    }
+                }
+                if (InvButtonCounter > 0) {
+                    InvButtonCounter -= Time.deltaTime;
+                    if(InvButtonCounter <= 0)
+                    {
+
+                    }
+                }
+                InvButtonCounter = InvButtonCD;
+                
+                
+                // UIInventory.transform.position = Vector3.MoveTowards(transform.position, new Vector3(UIInventory_In.position.x, UIInventory_In.position.y, -10f), 50 * Time.deltaTime);
             }
             if (dodgeCounter > 0)
             {
@@ -250,6 +273,21 @@ public class PlayerController : MonoBehaviour
                 inventory.RemoveItem(new Item { itemType = Item.ItemType.InvincibilityPotion, amount = 1 });
                 break;
         }
+    }
+
+    void InventoryMoveComplete()
+    {
+        if (!Inv_Out)
+        {
+            Inv_Out = true;
+            Debug.Log("Inventory Complete Inv should be true");
+        }
+        else
+        {
+            Inv_Out = false;
+            Debug.Log("Inventory Complete Inv should be false");
+        }
+        
     }
 
 

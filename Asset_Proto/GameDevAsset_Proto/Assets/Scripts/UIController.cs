@@ -38,6 +38,8 @@ public class UIController : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        DontDestroyOnLoad(gameObject);
+
     }
     // Start is called before the first frame update
     void Start()
@@ -79,6 +81,7 @@ public class UIController : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene(newGameScene);
         Destroy(PlayerController.instance.gameObject);
+        Destroy(UIController.instance.gameObject);
     }
     public void ReturnToMainMenu()
     {
@@ -86,6 +89,8 @@ public class UIController : MonoBehaviour
 
         SceneManager.LoadScene(mainMenuScene);
         Destroy(PlayerController.instance.gameObject);
+        Destroy(UIController.instance.gameObject);
+
 
     }
     public void Resume()

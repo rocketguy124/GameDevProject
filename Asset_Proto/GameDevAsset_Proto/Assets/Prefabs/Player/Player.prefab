@@ -495,12 +495,19 @@ MonoBehaviour:
   dodgeCooldown: 1
   dodgeInvincTime: 0.5
   dodgeCounter: 0
+  speedBoostCounter: 0
+  speedBoostLength: 2
+  speedBoostSpeed: 8
   staffArm: {fileID: 8723573963372684012}
   bodyAnim: {fileID: 8723573962489917730}
   wholePlayerAnim: {fileID: 8723573963923302103}
   bodySR: {fileID: 8723573962489917733}
   availableStaffs:
   - {fileID: 5066373498536672959}
+  currentStaff: 0
+  uiInventory: {fileID: 6523127467676670559, guid: 1081ba94a8d876e4a91f4796a03a51e1,
+    type: 3}
+  UIInventory: {fileID: 0}
   playerDodgeSound: 8
 --- !u!50 &8723573963923302099
 Rigidbody2D:

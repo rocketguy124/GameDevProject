@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
     [Header("Inventory")]
     private Inventory inventory;
     [SerializeField] private UIInventory uiInventory;
+    public GameObject UIInventory;
+    public Transform UIInventory_In, UIInventory_Out;
 
     /*
     [Header("Projectiles")]
@@ -152,6 +154,10 @@ public class PlayerController : MonoBehaviour
                     PlayerHealthController.instance.MakeInvincible(dodgeInvincTime);
                     AudioManager.instance.PlaySFX(playerDodgeSound);
                 }
+            }
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                UIInventory.transform.position = Vector3.MoveTowards(transform.position, new Vector3(UIInventory_In.position.x, UIInventory_In.position.y, -10f), 50 * Time.deltaTime);
             }
             if (dodgeCounter > 0)
             {

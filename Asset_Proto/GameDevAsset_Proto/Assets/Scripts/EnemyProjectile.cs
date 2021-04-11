@@ -20,11 +20,14 @@ public class EnemyProjectile : MonoBehaviour
     private bool CanBeAffected;
     private bool IsStopped;
 
+    public Animator enemyAnim;
+
 
     // Start is called before the first frame update
     void Start()
     {
         theRB = GetComponent<Rigidbody2D>();
+        enemyAnim = GetComponent<Animator>();
         timemanager = GameObject.FindGameObjectWithTag("TimeManager").GetComponent<TimeManager>();
 
         direction = PlayerController.instance.transform.position - transform.position;
@@ -42,6 +45,11 @@ public class EnemyProjectile : MonoBehaviour
         if (!timemanager.TimeIsStopped)
         {
             theRB.velocity = direction * speed * Time.deltaTime;
+            enemyAnim.enabled = true;
+            enemyAnim.speed = 1;
+            enemyAnim.SetBool("timeStopped", false);
+            enemyAnim.SetBool("isMoving", true);
+            Debug.Log("Anim is" + enemyAnim.enabled);
         }
         if (CanBeAffected && timemanager.TimeIsStopped && !IsStopped)
         {
@@ -53,6 +61,15 @@ public class EnemyProjectile : MonoBehaviour
                 theRB.velocity = Vector3.zero; //makes the rigidbody stop moving
                 theRB.isKinematic = true; //not affected by forces
                 IsStopped = true; // prevents this from looping
+                if(theRB.velocity.Equals( Vector3.zero))
+                {
+                    enemyAnim.enabled = false;
+                    enemyAnim.speed = 0;
+                    enemyAnim.SetBool("timeStopped", true);
+                    enemyAnim.SetBool("isMoving", false);
+                    Debug.Log("Anim is" + enemyAnim.enabled);
+                }
+                
             }
         }
 

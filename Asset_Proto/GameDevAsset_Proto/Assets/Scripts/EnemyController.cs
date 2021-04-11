@@ -163,7 +163,8 @@ public class EnemyController : MonoBehaviour
                 theRB.velocity = Vector2.zero;
             }
 
-
+            enemyAnim.enabled = true;
+            enemyAnim.SetBool("timeStopped", false);
             //Animation
             if (moveDirection != Vector3.zero)
             {
@@ -184,6 +185,8 @@ public class EnemyController : MonoBehaviour
                 theRB.velocity = Vector3.zero; //makes the rigidbody stop moving
                 theRB.isKinematic = true; //not affected by forces
                 IsStopped = true; // prevents this from looping
+                enemyAnim.enabled = false;
+                enemyAnim.SetBool("timeStopped", true);
             }
         }
     }

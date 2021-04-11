@@ -24,8 +24,6 @@ public class PlayerProjectile : MonoBehaviour
     void Update()
     {
         theRB.velocity = transform.right * speed;
-
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

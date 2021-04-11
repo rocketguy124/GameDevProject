@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8279954479963234293}
   - component: {fileID: 8279954479963234289}
   - component: {fileID: 8279954479963234290}
+  - component: {fileID: -4907230117784451765}
   m_Layer: 9
   m_Name: Player_FireBolt
   m_TagString: PlayerProjectile
@@ -151,3 +152,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-4907230117784451765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8279954479963234294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 937207e642785824f8d9093ca2626530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeBeforeAffected: 0

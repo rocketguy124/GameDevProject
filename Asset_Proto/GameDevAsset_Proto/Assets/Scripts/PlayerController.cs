@@ -46,6 +46,9 @@ public class PlayerController : MonoBehaviour
     public float InvButtonCDCounter;
     public float InvButtonCounter;
 
+    private TimeManager timemanager;
+
+
     /*
     [Header("Projectiles")]
     public GameObject projectileToFire;
@@ -68,6 +71,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         theRB = gameObject.GetComponent<Rigidbody2D>();
+        timemanager = GameObject.FindGameObjectWithTag("TimeManager").GetComponent<TimeManager>();
+
         //theCam = Camera.main;
         Inv_Out = true;
         InvButtonCD = 1f;
@@ -128,7 +133,17 @@ public class PlayerController : MonoBehaviour
                     shotCounter = timeBetweenShots;
                 }
             }*/
+            if (Input.GetKeyDown(KeyCode.Q)) //Stop Time when Q is pressed
+            {
+                timemanager.StopTime();
+                //Grayscale.enabled = true;
+            }
+            if (Input.GetKeyDown(KeyCode.E) && timemanager.TimeIsStopped)  //Continue Time when E is pressed
+            {
+                timemanager.ContinueTime();
+                //Grayscale.enabled = false;
 
+            }
             if (Input.GetKeyDown(KeyCode.Tab))
             {
                 if(availableStaffs.Count > 0)

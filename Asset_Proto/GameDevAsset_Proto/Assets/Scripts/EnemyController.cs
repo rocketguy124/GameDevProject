@@ -50,11 +50,21 @@ public class EnemyController : MonoBehaviour
     public GameObject[] itemsToDrop;
     public float dropPercent;
 
+    public float TimeBeforeAffected; //The time after the object spawns until it will be affected by the timestop(for projectiles etc)
+    private TimeManager timemanager;
+    private Vector3 recordedVelocity;
+    private float recordedMagnitude;
+
+    private float TimeBeforeAffectedTimer;
+    private bool CanBeAffected;
+    private bool IsStopped;
 
     // Start is called before the first frame update
     void Start()
     {
         theRB = GetComponent<Rigidbody2D>();
+        timemanager = GameObject.FindGameObjectWithTag("TimeManager").GetComponent<TimeManager>();
+
         if (shouldWander)
         {
             wanderPauseCounter = Random.Range(wanderPauseTime * 0.75f, wanderPauseTime * 1.25f);
@@ -65,95 +75,116 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (theBody.isVisible && PlayerController.instance.gameObject.activeInHierarchy)
-        {
-            moveDirection = Vector3.zero;
+        TimeBeforeAffectedTimer -= Time.deltaTime; // minus 1 per second
 
-            //Movement
-            if (Vector3.Distance(transform.position, PlayerController.instance.transform.position) <= rangeToChase && shouldChase)
+        if (TimeBeforeAffectedTimer <= 0f)
+        {
+            CanBeAffected = true; // Will be affected by timestop
+        }
+        if (!timemanager.TimeIsStopped)
+        {
+            if (theBody.isVisible && PlayerController.instance.gameObject.activeInHierarchy)
             {
-                moveDirection = PlayerController.instance.transform.position - transform.position;
+                moveDirection = Vector3.zero;
+
+                //Movement
+                if (Vector3.Distance(transform.position, PlayerController.instance.transform.position) <= rangeToChase && shouldChase)
+                {
+                    moveDirection = PlayerController.instance.transform.position - transform.position;
+                }
+                else
+                {
+                    if (shouldWander)
+                    {
+                        if (wanderMoveCounter > 0)
+                        {
+                            wanderMoveCounter -= Time.deltaTime;
+
+                            moveDirection = wanderDirection;
+
+                            if (wanderMoveCounter <= 0)
+                            {
+                                wanderPauseCounter = Random.Range(wanderPauseTime * 0.75f, wanderPauseTime * 1.25f);
+                            }
+                        }
+                        if (wanderPauseCounter > 0)
+                        {
+                            wanderPauseCounter -= Time.deltaTime;
+
+                            if (wanderPauseCounter <= 0)
+                            {
+                                wanderMoveCounter = Random.Range(wanderMoveTime * 0.75f, wanderMoveTime * 1.25f);
+
+                                wanderDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f);
+                            }
+                        }
+                    }
+                    if (shouldPatrol)
+                    {
+                        moveDirection = patrolPoints[currentpatrolPoint].position - transform.position;
+
+                        if (Vector3.Distance(transform.position, patrolPoints[currentpatrolPoint].position) < 0.2f)
+                        {
+                            currentpatrolPoint++;
+                            if (currentpatrolPoint >= patrolPoints.Length)
+                            {
+                                currentpatrolPoint = 0;
+                            }
+                        }
+                    }
+                }
+
+                if (shouldRunAway && Vector3.Distance(transform.position, PlayerController.instance.transform.position) <= runAwayRange)
+                {
+                    moveDirection = transform.position - PlayerController.instance.transform.position;
+
+                }
+
+
+
+                moveDirection.Normalize(); //MoveDirection Normalization
+                theRB.velocity = moveDirection * moveSpeed; // Velocity Setting
+
+
+                //AI should Shoot
+                if (shouldShoot && Vector3.Distance(PlayerController.instance.transform.position, transform.position) < shootRange)
+                {
+                    fireCounter -= Time.deltaTime;
+                    if (fireCounter <= 0)
+                    {
+                        fireCounter = fireRate;
+                        Instantiate(enemyProjectile, firePoint.position, enemyProjectile.transform.rotation * Quaternion.Inverse(firePoint.rotation));
+                        AudioManager.instance.PlaySFX(enemyShootSound);
+                    }
+                }
             }
             else
             {
-                if (shouldWander)
-                {
-                    if (wanderMoveCounter > 0)
-                    {
-                        wanderMoveCounter -= Time.deltaTime;
-
-                        moveDirection = wanderDirection;
-
-                        if (wanderMoveCounter <= 0)
-                        {
-                            wanderPauseCounter = Random.Range(wanderPauseTime * 0.75f, wanderPauseTime * 1.25f);
-                        }
-                    }
-                    if (wanderPauseCounter > 0)
-                    {
-                        wanderPauseCounter -= Time.deltaTime;
-
-                        if (wanderPauseCounter <= 0)
-                        {
-                            wanderMoveCounter = Random.Range(wanderMoveTime * 0.75f, wanderMoveTime * 1.25f);
-
-                            wanderDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f);
-                        }
-                    }
-                }
-                if (shouldPatrol)
-                {
-                    moveDirection = patrolPoints[currentpatrolPoint].position - transform.position;
-
-                    if (Vector3.Distance(transform.position, patrolPoints[currentpatrolPoint].position) < 0.2f)
-                    {
-                        currentpatrolPoint++;
-                        if (currentpatrolPoint >= patrolPoints.Length)
-                        {
-                            currentpatrolPoint = 0;
-                        }
-                    }
-                }
+                theRB.velocity = Vector2.zero;
             }
 
-            if (shouldRunAway && Vector3.Distance(transform.position, PlayerController.instance.transform.position) <= runAwayRange)
+
+            //Animation
+            if (moveDirection != Vector3.zero)
             {
-                moveDirection = transform.position - PlayerController.instance.transform.position;
-
+                enemyAnim.SetBool("isMoving", true);
             }
-
-
-
-            moveDirection.Normalize(); //MoveDirection Normalization
-            theRB.velocity = moveDirection * moveSpeed; // Velocity Setting
-
-
-            //AI should Shoot
-            if (shouldShoot && Vector3.Distance(PlayerController.instance.transform.position, transform.position) < shootRange)
+            else
             {
-                fireCounter -= Time.deltaTime;
-                if (fireCounter <= 0)
-                {
-                    fireCounter = fireRate;
-                    Instantiate(enemyProjectile, firePoint.position, enemyProjectile.transform.rotation * Quaternion.Inverse(firePoint.rotation));
-                    AudioManager.instance.PlaySFX(enemyShootSound);
-                }
+                enemyAnim.SetBool("isMoving", false);
             }
         }
-        else
+        if (CanBeAffected && timemanager.TimeIsStopped && !IsStopped)
         {
-            theRB.velocity = Vector2.zero;
-        }
+            if (theRB.velocity.magnitude >= 0f) //If Object is moving
+            {
+                recordedVelocity = theRB.velocity.normalized; //records direction of movement
+                recordedMagnitude = theRB.velocity.magnitude; // records magitude of movement
 
-
-        //Animation
-        if (moveDirection != Vector3.zero)
-        {
-            enemyAnim.SetBool("isMoving", true);
-        }
-        else
-        {
-            enemyAnim.SetBool("isMoving", false);
+                theRB.velocity = Vector3.zero; //makes the rigidbody stop moving
+                theRB.isKinematic = true; //not affected by forces
+                IsStopped = true; // prevents this from looping
+            }
         }
     }
 

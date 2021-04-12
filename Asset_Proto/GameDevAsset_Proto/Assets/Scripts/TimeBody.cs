@@ -12,7 +12,7 @@ public class TimeBody : MonoBehaviour
 
     private float TimeBeforeAffectedTimer;
     private bool CanBeAffected;
-    private bool IsStopped;
+    public bool IsStopped;
     // Start is called before the first frame update
     void Start()
     {

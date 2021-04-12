@@ -58,6 +58,7 @@ public class EnemyController : MonoBehaviour
     private float TimeBeforeAffectedTimer;
     private bool CanBeAffected;
     private bool IsStopped;
+    public TimeBody enemyTimeBody;
 
     // Start is called before the first frame update
     void Start()
@@ -175,6 +176,7 @@ public class EnemyController : MonoBehaviour
                 enemyAnim.SetBool("isMoving", false);
             }
         }
+        Debug.Log(CanBeAffected + ", " + timemanager.TimeIsStopped + ", " + !IsStopped);
         if (CanBeAffected && timemanager.TimeIsStopped && !IsStopped)
         {
             if (theRB.velocity.magnitude >= 0f) //If Object is moving
@@ -184,9 +186,9 @@ public class EnemyController : MonoBehaviour
 
                 theRB.velocity = Vector3.zero; //makes the rigidbody stop moving
                 theRB.isKinematic = true; //not affected by forces
-                IsStopped = true; // prevents this from looping
+                enemyTimeBody.IsStopped = true; // prevents this from looping
                 enemyAnim.enabled = false;
-                enemyAnim.SetBool("timeStopped", true);
+                //enemyAnim.SetBool("timeStopped", true);
             }
         }
     }

@@ -19,6 +19,7 @@ public class EnemyProjectile : MonoBehaviour
     private float TimeBeforeAffectedTimer;
     private bool CanBeAffected;
     private bool IsStopped;
+    public TimeBody enemyProjectileTimeBody;
 
     public Animator enemyAnim;
 
@@ -46,10 +47,7 @@ public class EnemyProjectile : MonoBehaviour
         {
             theRB.velocity = direction * speed * Time.deltaTime;
             enemyAnim.enabled = true;
-            enemyAnim.speed = 1;
-            enemyAnim.SetBool("timeStopped", false);
             enemyAnim.SetBool("isMoving", true);
-            Debug.Log("Anim is" + enemyAnim.enabled);
         }
         if (CanBeAffected && timemanager.TimeIsStopped && !IsStopped)
         {
@@ -60,14 +58,12 @@ public class EnemyProjectile : MonoBehaviour
 
                 theRB.velocity = Vector3.zero; //makes the rigidbody stop moving
                 theRB.isKinematic = true; //not affected by forces
-                IsStopped = true; // prevents this from looping
+                enemyProjectileTimeBody.IsStopped = true; // prevents this from looping
                 if(theRB.velocity.Equals( Vector3.zero))
                 {
                     enemyAnim.enabled = false;
-                    enemyAnim.speed = 0;
-                    enemyAnim.SetBool("timeStopped", true);
+                    
                     enemyAnim.SetBool("isMoving", false);
-                    Debug.Log("Anim is" + enemyAnim.enabled);
                 }
                 
             }

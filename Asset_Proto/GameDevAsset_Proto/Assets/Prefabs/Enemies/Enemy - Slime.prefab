@@ -239,6 +239,8 @@ MonoBehaviour:
   - {fileID: 7196008043870155013, guid: 241a0c89af8ecb547bd600b0581731db, type: 3}
   - {fileID: 8279127275822278193, guid: aa99c603a74d15c4dbade66c2c447083, type: 3}
   dropPercent: 20
+  TimeBeforeAffected: 0
+  enemyTimeBody: {fileID: -5124667960594556607}
 --- !u!114 &5878536180787210753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,6 +266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimeBeforeAffected: 0
+  IsStopped: 0
 --- !u!1 &6023167191809184796
 GameObject:
   m_ObjectHideFlags: 0

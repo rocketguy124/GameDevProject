@@ -46,7 +46,12 @@ public class PlayerController : MonoBehaviour
     public float InvButtonCDCounter;
     public float InvButtonCounter;
 
+    [Header("Time Stopping")]
     private TimeManager timemanager;
+    public float timeStopCoolDown;
+    public float timeStopCoolDownCounter;
+    public float timeStopCounter;
+    public float timeStopLength;
 
 
     /*
@@ -135,12 +140,13 @@ public class PlayerController : MonoBehaviour
             }*/
             if (Input.GetKeyDown(KeyCode.Q)) //Stop Time when Q is pressed
             {
-                timemanager.StopTime();
+                
+                StartCoroutine(TimeStopAbility());
                 //Grayscale.enabled = true;
             }
             if (Input.GetKeyDown(KeyCode.E) && timemanager.TimeIsStopped)  //Continue Time when E is pressed
             {
-                timemanager.ContinueTime();
+                
                 //Grayscale.enabled = false;
 
             }
@@ -306,6 +312,14 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Inventory Complete Inv should be false");
         }
         
+    }
+
+    public IEnumerator TimeStopAbility()
+    {
+        timemanager.StopTime();
+        yield return new WaitForSeconds(timeStopLength);
+        timemanager.ContinueTime();
+
     }
 
 

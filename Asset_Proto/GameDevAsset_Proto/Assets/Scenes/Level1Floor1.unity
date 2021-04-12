@@ -210,6 +210,21 @@ PrefabInstance:
       propertyPath: UIInventory_Out
       value: 
       objectReference: {fileID: 1616389852}
+    - target: {fileID: 8723573963923302098, guid: 9b5fd32889a53ab4eadb317368b1b292,
+        type: 3}
+      propertyPath: InvButtonCDCounter
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723573963923302098, guid: 9b5fd32889a53ab4eadb317368b1b292,
+        type: 3}
+      propertyPath: timeStopCoolDown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723573963923302098, guid: 9b5fd32889a53ab4eadb317368b1b292,
+        type: 3}
+      propertyPath: timeStopLength
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b5fd32889a53ab4eadb317368b1b292, type: 3}
 --- !u!1 &466976384
@@ -410,6 +425,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc262ad76aee4634ea79c72dae2b7574, type: 3}
+--- !u!1 &871137581 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8723573963923302097, guid: 9b5fd32889a53ab4eadb317368b1b292,
+    type: 3}
+  m_PrefabInstance: {fileID: 376355523}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &871137582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871137581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ab7afdf7f9d6f145aa057b72105ed77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1390746546 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 713466462456268698, guid: da9a050a0e5db694fa279feab41e6d05,

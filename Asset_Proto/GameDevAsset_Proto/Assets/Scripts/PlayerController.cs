@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IHasCooldown
 {
     public static PlayerController instance;
 
@@ -52,6 +52,16 @@ public class PlayerController : MonoBehaviour
     public float timeStopCoolDownCounter;
     public float timeStopCounter;
     public float timeStopLength;
+    public int timeStopSound;
+    public int timeResumeSound;
+
+    [Header("Time Stopping Cooldown")]
+    [SerializeField] private CooldownSystem cooldownSysem = null;
+    [SerializeField] private int id = 1;
+    [SerializeField] private float cooldownDuration = 10f;
+
+    public int ID => id;
+    public float CooldownDuration => cooldownDuration;
 
 
     /*
@@ -121,25 +131,11 @@ public class PlayerController : MonoBehaviour
             float angle = Mathf.Atan2(offset.y, offset.x) * Mathf.Rad2Deg;
             staffArm.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle - 90));
 
-            /*
-            if (Input.GetMouseButtonDown(0))
+            
+
+            if (Input.GetKeyDown(KeyCode.Q) && !cooldownSysem.IsOnCooldown(id)) //Stop Time when Q is pressed
             {
-                Instantiate(projectileToFire, firePoint.transform.position, firePoint.transform.rotation);
-                AudioManager.instance.PlaySFX(playerShootSound);
-                shotCounter = timeBetweenShots;
-            }
-            if (Input.GetMouseButton(0))
-            {
-                shotCounter -= Time.deltaTime;
-                if (shotCounter <= 0)
-                {
-                    Instantiate(projectileToFire, firePoint.transform.position, firePoint.transform.rotation);
-                    AudioManager.instance.PlaySFX(playerShootSound);
-                    shotCounter = timeBetweenShots;
-                }
-            }*/
-            if (Input.GetKeyDown(KeyCode.Q)) //Stop Time when Q is pressed
-            {
+                cooldownSysem.PutOnCooldown(this);
                 
                 StartCoroutine(TimeStopAbility());
                 //Grayscale.enabled = true;
@@ -317,8 +313,14 @@ public class PlayerController : MonoBehaviour
     public IEnumerator TimeStopAbility()
     {
         timemanager.StopTime();
+        AudioManager.instance.PlaySFX(23);
+        AudioManager.instance.levelMusic.Pause();
         yield return new WaitForSeconds(timeStopLength);
         timemanager.ContinueTime();
+        AudioManager.instance.PlaySFX(24);
+        AudioManager.instance.levelMusic.Play();
+
+
 
     }
 

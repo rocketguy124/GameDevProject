@@ -450,6 +450,7 @@ GameObject:
   - component: {fileID: 8723573963923302101}
   - component: {fileID: 8723573963923302103}
   - component: {fileID: 8723573963923302100}
+  - component: {fileID: 871137582}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -505,9 +506,22 @@ MonoBehaviour:
   availableStaffs:
   - {fileID: 5066373498536672959}
   currentStaff: 0
-  uiInventory: {fileID: 6523127467676670559, guid: 1081ba94a8d876e4a91f4796a03a51e1,
-    type: 3}
+  uiInventory: {fileID: 0}
   UIInventory: {fileID: 0}
+  UIInventory_In: {fileID: 0}
+  UIInventory_Out: {fileID: 0}
+  InvButtonCD: 0.5
+  InvButtonCDCounter: 0
+  InvButtonCounter: 0
+  timeStopCoolDown: 2
+  timeStopCoolDownCounter: 0
+  timeStopCounter: 0
+  timeStopLength: 3
+  timeStopSound: 0
+  timeResumeSound: 0
+  cooldownSysem: {fileID: 871137582}
+  id: 1
+  cooldownDuration: 10
   playerDodgeSound: 8
 --- !u!50 &8723573963923302099
 Rigidbody2D:
@@ -616,6 +630,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &871137582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8723573963923302097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ab7afdf7f9d6f145aa057b72105ed77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5089146222405244802
 PrefabInstance:
   m_ObjectHideFlags: 0

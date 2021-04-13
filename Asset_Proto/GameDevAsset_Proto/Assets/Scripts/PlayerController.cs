@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour, IHasCooldown
 {
@@ -56,7 +58,7 @@ public class PlayerController : MonoBehaviour, IHasCooldown
     public int timeResumeSound;
 
     [Header("Time Stopping Cooldown")]
-    [SerializeField] private CooldownSystem cooldownSysem = null;
+    [SerializeField] public CooldownSystem cooldownSystem = null;
     [SerializeField] private int id = 1;
     [SerializeField] private float cooldownDuration = 10f;
 
@@ -133,9 +135,9 @@ public class PlayerController : MonoBehaviour, IHasCooldown
 
             
 
-            if (Input.GetKeyDown(KeyCode.Q) && !cooldownSysem.IsOnCooldown(id)) //Stop Time when Q is pressed
+            if (Input.GetKeyDown(KeyCode.Q) && !cooldownSystem.IsOnCooldown(id)) //Stop Time when Q is pressed
             {
-                cooldownSysem.PutOnCooldown(this);
+                cooldownSystem.PutOnCooldown(this);
                 
                 StartCoroutine(TimeStopAbility());
                 //Grayscale.enabled = true;

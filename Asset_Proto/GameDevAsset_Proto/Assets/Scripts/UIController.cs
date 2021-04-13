@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
@@ -33,6 +34,10 @@ public class UIController : MonoBehaviour
     [Header("Boss")]
     public Slider bossHealthBar;
 
+    [Header("Time Stop Cooldown")]
+    [SerializeField] private Image timeStopCooldown;
+    [SerializeField] private TMP_Text timeStopCooldownText;
+
 
 
     private void Awake()
@@ -54,6 +59,11 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(PlayerController.instance.CooldownDuration > 0)
+        {
+            timeStopCooldown.fillAmount = PlayerController.instance.cooldownSystem.GetRemainingDuration(1)*0.1f; 
+            timeStopCooldownText.text = Mathf.Floor(PlayerController.instance.cooldownSystem.GetRemainingDuration(1)).ToString();
+        }
         if (fadingFromBlack)
         {
             fadeScreen.color = new Color(fadeScreen.color.r, fadeScreen.color.g, fadeScreen.color.b, Mathf.MoveTowards(fadeScreen.color.a, 0f, fadeSpeed * Time.deltaTime));

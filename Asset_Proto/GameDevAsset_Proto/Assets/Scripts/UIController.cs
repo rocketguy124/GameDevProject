@@ -36,6 +36,8 @@ public class UIController : MonoBehaviour
 
     [Header("Time Stop Cooldown")]
     [SerializeField] private Image timeStopCooldown;
+    [SerializeField] private Image timeStopFill;
+    [SerializeField] private float timeStopCount;
     [SerializeField] private TMP_Text timeStopCooldownText;
 
 
@@ -59,12 +61,30 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PlayerController.instance.CooldownDuration > 0)
+        if(timeStopCount > 0)
         {
-            timeStopCooldown.fillAmount = PlayerController.instance.cooldownSystem.GetRemainingDuration(1)*0.1f; 
+            //timeStopFill.fillAmount -= Time.deltaTime;
+            timeStopCount -= Time.deltaTime;
+            timeStopFill.fillAmount = timeStopCount * 0.1f;
+            Debug.Log("timeStopCount: " + timeStopCount);
+            //Debug.Log("timeStopFill.fillAmount: " +timeStopFill.fillAmount);
+        }
+        else
+        {
+            timeStopFill.fillAmount = 0f;
+            timeStopCount = PlayerController.instance.timeStopLength;
+            Debug.Log("InElse");
+        }
+        if (PlayerController.instance.cooldownSystem.GetRemainingDuration(1) > 0) // Updating Cooldown Visuals
+        {
+            
+            
+            //timeStopCooldown.fillAmount = PlayerController.instance.cooldownSystem.GetRemainingDuration(1)*0.1f; 
+            //timeStopCooldown.fillAmount = PlayerController.instance.cooldownSystem.GetRemainingDuration(1)*0.1f; 
             timeStopCooldownText.text = Mathf.Floor(PlayerController.instance.cooldownSystem.GetRemainingDuration(1)).ToString();
         }
-        if (fadingFromBlack)
+        
+        if (fadingFromBlack) // Fading From black
         {
             fadeScreen.color = new Color(fadeScreen.color.r, fadeScreen.color.g, fadeScreen.color.b, Mathf.MoveTowards(fadeScreen.color.a, 0f, fadeSpeed * Time.deltaTime));
             if (fadeScreen.color.a == 0f)
@@ -72,7 +92,7 @@ public class UIController : MonoBehaviour
                 fadingFromBlack = false;
             }
         }
-        if (fadingToBlack)
+        if (fadingToBlack) // Fading To black
         {
             fadeScreen.color = new Color(fadeScreen.color.r, fadeScreen.color.g, fadeScreen.color.b, Mathf.MoveTowards(fadeScreen.color.a, 1f, fadeSpeed * Time.deltaTime));
             if (fadeScreen.color.a == 0f)

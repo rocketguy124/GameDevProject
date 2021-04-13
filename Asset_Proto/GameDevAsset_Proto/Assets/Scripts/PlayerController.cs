@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour, IHasCooldown
             if (Input.GetKeyDown(KeyCode.Q) && !cooldownSystem.IsOnCooldown(id)) //Stop Time when Q is pressed
             {
                 cooldownSystem.PutOnCooldown(this);
-                
+                PostProcessingEffects.instance.TimeStopping();
                 StartCoroutine(TimeStopAbility());
                 //Grayscale.enabled = true;
             }
@@ -317,8 +317,12 @@ public class PlayerController : MonoBehaviour, IHasCooldown
         timemanager.StopTime();
         AudioManager.instance.PlaySFX(23);
         AudioManager.instance.levelMusic.Pause();
+
         yield return new WaitForSeconds(timeStopLength);
+
         timemanager.ContinueTime();
+        PostProcessingEffects.instance.TimeResuming();
+
         AudioManager.instance.PlaySFX(24);
         AudioManager.instance.levelMusic.Play();
 

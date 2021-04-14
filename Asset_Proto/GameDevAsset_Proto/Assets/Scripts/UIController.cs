@@ -37,7 +37,7 @@ public class UIController : MonoBehaviour
     [Header("Time Stop Cooldown")]
     [SerializeField] private Image timeStopCooldown;
     [SerializeField] private Image timeStopFill;
-    [SerializeField] private float timeStopCount;
+    [SerializeField] public float timeStopCount;
     [SerializeField] private TMP_Text timeStopCooldownText;
 
 
@@ -65,14 +65,14 @@ public class UIController : MonoBehaviour
         {
             //timeStopFill.fillAmount -= Time.deltaTime;
             timeStopCount -= Time.deltaTime;
-            timeStopFill.fillAmount = timeStopCount * 0.1f;
+            timeStopFill.fillAmount = timeStopCount * (1/PlayerController.instance.timeStopLength);
             Debug.Log("timeStopCount: " + timeStopCount);
             //Debug.Log("timeStopFill.fillAmount: " +timeStopFill.fillAmount);
         }
         else
         {
             timeStopFill.fillAmount = 0f;
-            timeStopCount = PlayerController.instance.timeStopLength;
+            //timeStopCount = PlayerController.instance.timeStopLength;
             Debug.Log("InElse");
         }
         if (PlayerController.instance.cooldownSystem.GetRemainingDuration(1) > 0) // Updating Cooldown Visuals
@@ -80,7 +80,7 @@ public class UIController : MonoBehaviour
             
             
             //timeStopCooldown.fillAmount = PlayerController.instance.cooldownSystem.GetRemainingDuration(1)*0.1f; 
-            //timeStopCooldown.fillAmount = PlayerController.instance.cooldownSystem.GetRemainingDuration(1)*0.1f; 
+            timeStopCooldown.fillAmount = PlayerController.instance.cooldownSystem.GetRemainingDuration(1)*0.1f; 
             timeStopCooldownText.text = Mathf.Floor(PlayerController.instance.cooldownSystem.GetRemainingDuration(1)).ToString();
         }
         

@@ -46,8 +46,11 @@ public class EnemyProjectile : MonoBehaviour
         if (!timemanager.TimeIsStopped)
         {
             theRB.velocity = direction * speed * Time.deltaTime;
-            enemyAnim.enabled = true;
-            enemyAnim.SetBool("isMoving", true);
+            if (enemyAnim != null)
+            {
+                enemyAnim.enabled = true;
+            }
+
         }
         if (CanBeAffected && timemanager.TimeIsStopped && !IsStopped)
         {
@@ -61,9 +64,9 @@ public class EnemyProjectile : MonoBehaviour
                 enemyProjectileTimeBody.IsStopped = true; // prevents this from looping
                 if(theRB.velocity.Equals( Vector3.zero))
                 {
+                    if(enemyAnim != null)
                     enemyAnim.enabled = false;
                     
-                    enemyAnim.SetBool("isMoving", false);
                 }
                 
             }

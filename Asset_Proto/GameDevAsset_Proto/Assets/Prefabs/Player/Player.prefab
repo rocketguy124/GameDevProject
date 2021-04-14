@@ -516,12 +516,12 @@ MonoBehaviour:
   timeStopCoolDown: 2
   timeStopCoolDownCounter: 0
   timeStopCounter: 0
-  timeStopLength: 3
+  timeStopLength: 10
   timeStopSound: 0
   timeResumeSound: 0
-  cooldownSysem: {fileID: 871137582}
+  cooldownSystem: {fileID: 871137582}
   id: 1
-  cooldownDuration: 10
+  cooldownDuration: 20
   playerDodgeSound: 8
 --- !u!50 &8723573963923302099
 Rigidbody2D:

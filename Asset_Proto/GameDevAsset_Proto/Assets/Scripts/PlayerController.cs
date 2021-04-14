@@ -138,6 +138,7 @@ public class PlayerController : MonoBehaviour, IHasCooldown
             if (Input.GetKeyDown(KeyCode.Q) && !cooldownSystem.IsOnCooldown(id)) //Stop Time when Q is pressed
             {
                 cooldownSystem.PutOnCooldown(this);
+                UIController.instance.timeStopCount = timeStopLength;
                 PostProcessingEffects.instance.TimeStopping();
                 StartCoroutine(TimeStopAbility());
                 //Grayscale.enabled = true;

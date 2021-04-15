@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 4176727339584637567}
   - component: {fileID: 8393331034645242451}
   - component: {fileID: 6317873025799330757}
+  - component: {fileID: -6557552516990532367}
+  - component: {fileID: 5191130157331430473}
+  - component: {fileID: 326967921}
   m_Layer: 13
   m_Name: SpikePeaks
   m_TagString: Untagged
@@ -73,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -87772533
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: -3
   m_Sprite: {fileID: 21300000, guid: 1fab99f6df7a7714db11b41992fecc9a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -142,3 +145,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdd404672fd3301438b7fa95c66f4bd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &-6557552516990532367
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4176727339584637564}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &5191130157331430473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4176727339584637564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 937207e642785824f8d9093ca2626530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeBeforeAffected: 0
+  IsStopped: 0
+--- !u!114 &326967921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4176727339584637564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c74939acba40cad4bb3c8f5a33657c4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timemanager: {fileID: 0}
+  otherTimeBody: {fileID: 5191130157331430473}

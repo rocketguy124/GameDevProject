@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 368518058518215392}
   - component: {fileID: 368518058518215394}
   - component: {fileID: 368518058518215397}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: WaterStaff Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}

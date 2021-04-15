@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1007257234843871150}
   - component: {fileID: 1007257234843871151}
   - component: {fileID: 1007257234843871144}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: FireStaff Pickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}

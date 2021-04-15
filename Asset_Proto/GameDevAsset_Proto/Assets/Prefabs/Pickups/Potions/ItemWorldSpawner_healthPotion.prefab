@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7196008043870155008}
   - component: {fileID: 7196008043870155015}
   - component: {fileID: 7196008043870155014}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: ItemWorldSpawner_healthPotion
   m_TagString: Untagged
   m_Icon: {fileID: 0}

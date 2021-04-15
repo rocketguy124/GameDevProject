@@ -43,7 +43,7 @@ public class PlayerHealthController : MonoBehaviour
 
             if(invincCount <= 0)
             {
-                PlayerController.instance.bodySR.color = new Color(PlayerController.instance.bodySR.color.r, PlayerController.instance.bodySR.color.g, PlayerController.instance.bodySR.color.b, 1f); //Making Player transparent to show invincibility
+                PlayerController.instance.bodySR.color = new Color(PlayerController.instance.bodySR.color.r, PlayerController.instance.bodySR.color.g, PlayerController.instance.bodySR.color.b, 1f); //Making Player opaque to show hittable again
 
             }
         }

@@ -165,7 +165,6 @@ public class EnemyController : MonoBehaviour
             }
 
             enemyAnim.enabled = true;
-            enemyAnim.SetBool("timeStopped", false);
             //Animation
             if (moveDirection != Vector3.zero)
             {
@@ -176,7 +175,7 @@ public class EnemyController : MonoBehaviour
                 enemyAnim.SetBool("isMoving", false);
             }
         }
-        Debug.Log(CanBeAffected + ", " + timemanager.TimeIsStopped + ", " + !IsStopped);
+        //Debug.Log(CanBeAffected + ", " + timemanager.TimeIsStopped + ", " + !IsStopped);
         if (CanBeAffected && timemanager.TimeIsStopped && !IsStopped)
         {
             if (theRB.velocity.magnitude >= 0f) //If Object is moving
@@ -188,7 +187,6 @@ public class EnemyController : MonoBehaviour
                 theRB.isKinematic = true; //not affected by forces
                 enemyTimeBody.IsStopped = true; // prevents this from looping
                 enemyAnim.enabled = false;
-                //enemyAnim.SetBool("timeStopped", true);
             }
         }
     }
@@ -196,6 +194,9 @@ public class EnemyController : MonoBehaviour
     public void DamageEnemy(int amountToDeal)
     {
         enemyHealth -= amountToDeal;
+
+        StartCoroutine(EnemyBlinkingRed());
+
 
         Instantiate(hitFX, transform.position, transform.rotation);
 
@@ -231,4 +232,16 @@ public class EnemyController : MonoBehaviour
     }
 
 
+    public IEnumerator EnemyBlinkingRed()
+    {
+        //float t = 0.3f;
+        float tempRedValue = theBody.color.r;
+        float tempGreenValue = theBody.color.g;
+        float tempBlueValue = theBody.color.b;
+
+        theBody.color = new Color(1f, 0, 0, 1f); //blinking Enemy red after getting hit
+        
+        yield return new WaitForSeconds(0.1f);
+        theBody.color = new Color(tempRedValue, tempGreenValue, tempBlueValue, 1f);
+    }
 }

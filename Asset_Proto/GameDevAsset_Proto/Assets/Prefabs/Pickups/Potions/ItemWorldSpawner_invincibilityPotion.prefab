@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1067895738528416448}
   - component: {fileID: 1067895738528416463}
   - component: {fileID: 1067895738528416462}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: ItemWorldSpawner_invincibilityPotion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item:
     itemType: 3
-    amount: 5
+    amount: 1
 --- !u!212 &1067895738528416462
 SpriteRenderer:
   m_ObjectHideFlags: 0

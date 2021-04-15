@@ -267,6 +267,7 @@ public class PlayerController : MonoBehaviour, IHasCooldown
         ItemWorld itemWorld = collision.GetComponent<ItemWorld>();
         if(itemWorld != null)
         {
+            AudioManager.instance.PlaySFX(25);
             inventory.AddItem(itemWorld.GetItem());
             itemWorld.DestroySelf();
         }
@@ -277,21 +278,25 @@ public class PlayerController : MonoBehaviour, IHasCooldown
         switch (item.itemType)
         {
             case Item.ItemType.HealthPotion:
+                AudioManager.instance.PlaySFX(7);
                 PlayerHealthController.instance.HealPlayer(5);
                 inventory.RemoveItem(new Item { itemType = Item.ItemType.HealthPotion, amount = 1 });
                 break;
 
             case Item.ItemType.MajorHealthPotion:
+                AudioManager.instance.PlaySFX(7);
                 PlayerHealthController.instance.HealPlayer(PlayerHealthController.instance.maxHealth);
                 inventory.RemoveItem(new Item { itemType = Item.ItemType.MajorHealthPotion, amount = 1 });
                 break;
 
             case Item.ItemType.SpeedPotion:
+                AudioManager.instance.PlaySFX(8);
                 speedBoostCounter = 2f;
                 inventory.RemoveItem(new Item { itemType = Item.ItemType.SpeedPotion, amount = 1 });
                 break;
 
             case Item.ItemType.InvincibilityPotion:
+                AudioManager.instance.PlaySFX(20);
                 PlayerHealthController.instance.MakeInvincible(2f);
                 inventory.RemoveItem(new Item { itemType = Item.ItemType.InvincibilityPotion, amount = 1 });
                 break;
@@ -303,12 +308,12 @@ public class PlayerController : MonoBehaviour, IHasCooldown
         if (!Inv_Out)
         {
             Inv_Out = true;
-            Debug.Log("Inventory Complete Inv should be true");
+            //Debug.Log("Inventory Complete Inv should be true");
         }
         else
         {
             Inv_Out = false;
-            Debug.Log("Inventory Complete Inv should be false");
+            //Debug.Log("Inventory Complete Inv should be false");
         }
         
     }

@@ -66,14 +66,14 @@ public class UIController : MonoBehaviour
             //timeStopFill.fillAmount -= Time.deltaTime;
             timeStopCount -= Time.deltaTime;
             timeStopFill.fillAmount = timeStopCount * (1/PlayerController.instance.timeStopLength);
-            Debug.Log("timeStopCount: " + timeStopCount);
+            //Debug.Log("timeStopCount: " + timeStopCount);
             //Debug.Log("timeStopFill.fillAmount: " +timeStopFill.fillAmount);
         }
         else
         {
             timeStopFill.fillAmount = 0f;
             //timeStopCount = PlayerController.instance.timeStopLength;
-            Debug.Log("InElse");
+            //Debug.Log("InElse");
         }
         if (PlayerController.instance.cooldownSystem.GetRemainingDuration(1) > 0) // Updating Cooldown Visuals
         {

@@ -97,6 +97,15 @@ public class EnemyController : MonoBehaviour
                 //Movement
                 if (Vector3.Distance(transform.position, PlayerController.instance.transform.position) <= rangeToChase && shouldChase)
                 {
+                    if (canSpawnMore)
+                    {
+                        if (!hasSpawned)
+                        {
+                            Instantiate(spawnedMob, firePoint.position, firePoint.rotation);
+                            Instantiate(deathPoof, firePoint.position, firePoint.rotation);
+                            hasSpawned = true;
+                        }
+                    }
                     moveDirection = PlayerController.instance.transform.position - transform.position;
                 }
                 else

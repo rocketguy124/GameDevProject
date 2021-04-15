@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
@@ -101,6 +102,7 @@ public class PlayerController : MonoBehaviour, IHasCooldown
         inventory = new Inventory(UseItem);
         uiInventory.SetInventory(inventory);
     }
+    
 
     // Update is called once per frame
     void Update()
@@ -261,6 +263,8 @@ public class PlayerController : MonoBehaviour, IHasCooldown
         UIController.instance.currentStaff.sprite = availableStaffs[currentStaff].staffUI;
         UIController.instance.staffText.text = availableStaffs[currentStaff].weaponName;
     }
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

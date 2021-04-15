@@ -183,7 +183,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.2}
+  m_Offset: {x: 0.031212568, y: -0.16878745}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -194,7 +194,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.5}
+  m_Size: {x: 0.56242514, y: 0.5624251}
   m_EdgeRadius: 0
 --- !u!50 &9128899328448060371
 Rigidbody2D:
@@ -232,15 +232,17 @@ MonoBehaviour:
   theRB: {fileID: 0}
   moveSpeed: 3
   theBody: {fileID: 9128899328046482094}
+  canSpawnMore: 0
+  spawnedMob: {fileID: 0}
   shouldChase: 1
-  rangeToChase: 7
   shouldShoot: 0
   shouldRunAway: 0
-  runAwayRange: 0
   shouldWander: 0
+  shouldPatrol: 1
+  rangeToChase: 7
+  runAwayRange: 0
   wanderMoveTime: 0
   wanderPauseTime: 0
-  shouldPatrol: 1
   patrolPoints:
   - {fileID: 0}
   - {fileID: 0}

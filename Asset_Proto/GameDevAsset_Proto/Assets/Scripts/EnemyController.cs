@@ -10,16 +10,22 @@ public class EnemyController : MonoBehaviour
     public SpriteRenderer theBody;
 
     [Header("AI")]
+    public bool canSpawnMore;
+    private bool hasSpawned = false;
+    public GameObject spawnedMob;
     public bool shouldChase;
-    public float rangeToChase;
-    private Vector3 moveDirection;
     public bool shouldShoot;
     public bool shouldRunAway;
-    public float runAwayRange;
     public bool shouldWander;
+    public bool shouldPatrol;
+
+    
+    public float rangeToChase;
+    private Vector3 moveDirection;
+    
+    public float runAwayRange;
     public float wanderMoveTime, wanderPauseTime;
     private float wanderMoveCounter, wanderPauseCounter;
-    public bool shouldPatrol;
     public Transform[] patrolPoints;
     private int currentpatrolPoint;
     private Vector3 wanderDirection;
@@ -139,7 +145,17 @@ public class EnemyController : MonoBehaviour
                 {
                     moveDirection = transform.position - PlayerController.instance.transform.position;
 
+                    if (canSpawnMore)
+                    {
+                        if (!hasSpawned)
+                        {
+                            Instantiate(spawnedMob, firePoint.position, firePoint.rotation);
+                            Instantiate(deathPoof, firePoint.position, firePoint.rotation);
+                            hasSpawned = true;
+                        }
+                    }
                 }
+                
 
 
 

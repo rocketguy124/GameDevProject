@@ -21,6 +21,16 @@ public class BossController : MonoBehaviour
     public BossPhase[] phases;
     public int currentPhase;
 
+    private float TimeBeforeAffectedTimer;
+    private bool CanBeAffected;
+    private bool IsStopped;
+    public TimeBody enemyTimeBody;
+    public float TimeBeforeAffected; //The time after the object spawns until it will be affected by the timestop(for projectiles etc)
+    private TimeManager timemanager;
+    private Vector3 recordedVelocity;
+    private float recordedMagnitude;
+
+
 
 
 
@@ -35,6 +45,8 @@ public class BossController : MonoBehaviour
     void Start()
     {
         theRB = GetComponent<Rigidbody2D>();
+        timemanager = GameObject.FindGameObjectWithTag("TimeManager").GetComponent<TimeManager>();
+
 
         actions = phases[currentPhase].actions;
         actionCounter = actions[currentAction].actionLength;
@@ -46,53 +58,75 @@ public class BossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (actionCounter > 0)
+        TimeBeforeAffectedTimer -= Time.deltaTime; // minus 1 per second
+
+        if (TimeBeforeAffectedTimer <= 0f)
         {
-            actionCounter -= Time.deltaTime;
-
-            //Movement
-            moveDirection = Vector2.zero;
-
-            if (actions[currentAction].shouldMove)
+            CanBeAffected = true; // Will be affected by timestop
+        }
+        if (!timemanager.TimeIsStopped)
+        {
+            if (actionCounter > 0)
             {
-                if (actions[currentAction].shouldChase)
-                {
-                    moveDirection = PlayerController.instance.transform.position - transform.position;
-                    moveDirection.Normalize();
-                }
+                actionCounter -= Time.deltaTime;
 
-                if (actions[currentAction].moveToPoints && Vector3.Distance(transform.position, actions[currentAction].pointToMoveTo.position) > 0.5f)
-                {
-                    moveDirection = actions[currentAction].pointToMoveTo.position - transform.position;
-                    moveDirection.Normalize();
-                }
-            }
+                //Movement
+                moveDirection = Vector2.zero;
 
-            theRB.velocity = moveDirection * actions[currentAction].moveSpeed;
-
-            //Shooting
-            if (actions[currentAction].shouldShoot)
-            {
-                shotCounter -= Time.deltaTime;
-                if (shotCounter <= 0)
+                if (actions[currentAction].shouldMove)
                 {
-                    shotCounter = actions[currentAction].timeBetweenShots;
-                    foreach (Transform t in actions[currentAction].shotPoints)
+                    if (actions[currentAction].shouldChase)
                     {
-                        Instantiate(actions[currentAction].thingToShoot, t.position, t.rotation);
+                        moveDirection = PlayerController.instance.transform.position - transform.position;
+                        moveDirection.Normalize();
+                    }
+
+                    if (actions[currentAction].moveToPoints && Vector3.Distance(transform.position, actions[currentAction].pointToMoveTo.position) > 0.5f)
+                    {
+                        moveDirection = actions[currentAction].pointToMoveTo.position - transform.position;
+                        moveDirection.Normalize();
+                    }
+                }
+
+                theRB.velocity = moveDirection * actions[currentAction].moveSpeed;
+
+                //Shooting
+                if (actions[currentAction].shouldShoot)
+                {
+                    shotCounter -= Time.deltaTime;
+                    if (shotCounter <= 0)
+                    {
+                        shotCounter = actions[currentAction].timeBetweenShots;
+                        foreach (Transform t in actions[currentAction].shotPoints)
+                        {
+                            Instantiate(actions[currentAction].thingToShoot, t.position, t.rotation);
+                        }
                     }
                 }
             }
-        }
-        else
-        {
-            currentAction++;
-            if (currentAction >= actions.Length)
+            else
             {
-                currentAction = 0;
-            }
-            actionCounter = actions[currentAction].actionLength;
+                currentAction++;
+                if (currentAction >= actions.Length)
+                {
+                    currentAction = 0;
+                }
+                actionCounter = actions[currentAction].actionLength;
 
+            }
+        }
+        if (CanBeAffected && timemanager.TimeIsStopped && !IsStopped)
+        {
+            if (theRB.velocity.magnitude >= 0f) //If Object is moving
+            {
+                recordedVelocity = theRB.velocity.normalized; //records direction of movement
+                recordedMagnitude = theRB.velocity.magnitude; // records magitude of movement
+
+                theRB.velocity = Vector3.zero; //makes the rigidbody stop moving
+                theRB.isKinematic = true; //not affected by forces
+                enemyTimeBody.IsStopped = true; // prevents this from looping
+                //enemyAnim.enabled = false;
+            }
         }
     }
     public void TakeDamage(int damageAmount)

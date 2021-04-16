@@ -31,7 +31,10 @@ public class OtherTimeStopping : MonoBehaviour
         {
             CanBeAffected = true; // Will be affected by timestop
         }
-        otherAnim.enabled = true;
+        if (otherAnim != null){
+            otherAnim.enabled = true;
+        }
+        
 
         if (CanBeAffected && timemanager.TimeIsStopped && !IsStopped)
         {
@@ -42,7 +45,10 @@ public class OtherTimeStopping : MonoBehaviour
                 theRB.velocity = Vector3.zero; //makes the rigidbody stop moving
                 theRB.isKinematic = true; //not affected by forces
                 otherTimeBody.IsStopped = true; // prevents this from looping
-                otherAnim.enabled = false;
+                if (otherAnim != null)
+                {
+                    otherAnim.enabled = false;
+                }
             }
         }
     }

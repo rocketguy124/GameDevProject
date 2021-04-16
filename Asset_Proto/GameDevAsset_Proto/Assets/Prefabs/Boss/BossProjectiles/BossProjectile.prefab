@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1836824153873764024}
   - component: {fileID: 1836824153873764031}
   - component: {fileID: -5983753585830410960}
+  - component: {fileID: 6109504068894436639}
+  - component: {fileID: 9184669226908643326}
   m_Layer: 11
   m_Name: BossProjectile
   m_TagString: Untagged
@@ -99,6 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   enemyProjectileImpactSound: 22
+  TimeBeforeAffected: 0
+  bossProjectileTimeBody: {fileID: 6109504068894436639}
 --- !u!58 &-5983753585830410960
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -115,3 +119,38 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.2
+--- !u!114 &6109504068894436639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836824153873764030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 937207e642785824f8d9093ca2626530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeBeforeAffected: 0
+  IsStopped: 0
+--- !u!50 &9184669226908643326
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836824153873764030}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

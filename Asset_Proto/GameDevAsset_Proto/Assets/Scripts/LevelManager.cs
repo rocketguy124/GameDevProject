@@ -39,6 +39,10 @@ public class LevelManager : MonoBehaviour
         {
             PauseUnPause();
         }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SceneManager.LoadScene("Boss1");
+        }
     }
 
     public IEnumerator LevelEnd()

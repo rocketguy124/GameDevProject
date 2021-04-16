@@ -3207,8 +3207,8 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "To Move:\n\n - Use WSAD to Move\n\n\n\n - If your health drops to zero,
     you will die and need to restart\n\n - Left click to fire projectiles\n\n - Projectiles
-    will damage enemies and like you, will die when their health has depleted\n\n
-    - Kill all enemies to proceed to the next room\n\n - Search for the exit to move
+    will damage enemies and like you, will die when their health has depleted\n\n-
+    Kill all enemies to proceed to the next room\n\n - Search for the exit to move
     to the next floor"
 --- !u!222 &1328517518
 CanvasRenderer:

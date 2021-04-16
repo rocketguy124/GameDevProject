@@ -33,6 +33,7 @@ public class UIController : MonoBehaviour
 
     [Header("Boss")]
     public Slider bossHealthBar;
+    public Text bossNameText;
 
     [Header("Time Stop Cooldown")]
     [SerializeField] private Image timeStopCooldown;

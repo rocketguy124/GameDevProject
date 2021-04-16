@@ -8,6 +8,7 @@ TagManager:
   - PlayerProjectile
   - Boss
   - TimeManager
+  - BossTrigger
   layers:
   - Default
   - TransparentFX

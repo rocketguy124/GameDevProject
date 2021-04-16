@@ -161,7 +161,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1315633855453264055}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.46, y: -3.2, z: -1.9748456}
+  m_LocalPosition: {x: -4.46, y: -3.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1315633854011834815}
@@ -231,15 +231,17 @@ MonoBehaviour:
   theRB: {fileID: 0}
   moveSpeed: 3
   theBody: {fileID: 1315633854011834812}
+  canSpawnMore: 0
+  spawnedMob: {fileID: 0}
   shouldChase: 0
-  rangeToChase: 7
   shouldShoot: 1
   shouldRunAway: 1
-  runAwayRange: 5
   shouldWander: 0
+  shouldPatrol: 0
+  rangeToChase: 7
+  runAwayRange: 5
   wanderMoveTime: 0
   wanderPauseTime: 0
-  shouldPatrol: 0
   patrolPoints: []
   enemyProjectile: {fileID: 3223289917624973586, guid: a67f7125387aae14b9c4c15f242576f7,
     type: 3}

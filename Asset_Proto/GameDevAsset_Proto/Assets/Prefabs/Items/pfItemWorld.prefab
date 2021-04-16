@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1624175548177518147}
   - component: {fileID: 1624175548177518144}
   - component: {fileID: 4492882800274528997}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: pfItemWorld
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 5495567766782343223}
   - component: {fileID: 826690050244780145}
   - component: {fileID: 7923968912224304759}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}

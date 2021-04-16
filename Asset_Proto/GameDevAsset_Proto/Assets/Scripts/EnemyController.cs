@@ -138,7 +138,6 @@ public class EnemyController : MonoBehaviour
                     if (shouldPatrol)
                     {
                         moveDirection = patrolPoints[currentpatrolPoint].position - transform.position;
-
                         if (Vector3.Distance(transform.position, patrolPoints[currentpatrolPoint].position) < 0.2f)
                         {
                             currentpatrolPoint++;

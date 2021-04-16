@@ -2780,6 +2780,7 @@ MonoBehaviour:
   mapDisplay: {fileID: 556452804}
   fullmapText: {fileID: 4944406376789549634}
   bossHealthBar: {fileID: 1411728970733051548}
+  bossNameText: {fileID: 468632100}
   timeStopCooldown: {fileID: 5329070825544594911}
   timeStopFill: {fileID: 2197006518448968694}
   timeStopCount: 0

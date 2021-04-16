@@ -275,6 +275,18 @@ public class PlayerController : MonoBehaviour, IHasCooldown
             inventory.AddItem(itemWorld.GetItem());
             itemWorld.DestroySelf();
         }
+        if(collision.tag == "BossTrigger")
+        {
+            UIController.instance.bossNameText.text = collision.GetComponent<BossArenaTrigger>().ReturnBossNameFromInt(0);
+            UIController.instance.bossHealthBar.gameObject.SetActive(true);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "BossTrigger")
+        {
+            UIController.instance.bossHealthBar.gameObject.SetActive(false);
+        }
     }
 
     private void UseItem(Item item)
@@ -340,5 +352,12 @@ public class PlayerController : MonoBehaviour, IHasCooldown
 
     }
 
-
+    public void SlowPlayer(float slowPercentage)
+    {
+        activeMovespeed = activeMovespeed * slowPercentage;
+    }
+    public void MakePlayerNormalSpeed()
+    {
+        activeMovespeed = moveSpeed;
+    }
 }

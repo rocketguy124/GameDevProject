@@ -838,10 +838,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 468632100, guid: da9a050a0e5db694fa279feab41e6d05, type: 3}
-      propertyPath: m_Text
-      value: EYEZEN
-      objectReference: {fileID: 0}
     - target: {fileID: 6497382016064038107, guid: da9a050a0e5db694fa279feab41e6d05,
         type: 3}
       propertyPath: m_Interactable

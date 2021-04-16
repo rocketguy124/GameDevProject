@@ -119,7 +119,7 @@ MonoBehaviour:
   theRB: {fileID: 0}
   enemyProjectileImpactSound: 22
   TimeBeforeAffected: 0
-  enemyProjectileTimeBody: {fileID: 0}
+  enemyProjectileTimeBody: {fileID: 8818951896338965530}
   enemyAnim: {fileID: 0}
 --- !u!50 &-737404153687551729
 Rigidbody2D:

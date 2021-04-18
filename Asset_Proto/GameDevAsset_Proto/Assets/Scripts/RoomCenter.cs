@@ -9,7 +9,7 @@ public class RoomCenter : MonoBehaviour
 
     
 
-    [HideInInspector]
+    //[HideInInspector]
     public Room theRoom;
 
     // Start is called before the first frame update

@@ -6,6 +6,8 @@ public class PlayerHealthController : MonoBehaviour
 {
     public static PlayerHealthController instance;
 
+    public bool canDie = true;
+
     [Header("Health")]
     public int currentHealth;
     public int maxHealth;
@@ -60,7 +62,7 @@ public class PlayerHealthController : MonoBehaviour
             invincCount = invincLength; //setting invincibility timer
 
             PlayerController.instance.bodySR.color = new Color(PlayerController.instance.bodySR.color.r, PlayerController.instance.bodySR.color.g, PlayerController.instance.bodySR.color.b, 0.5f); //Making Player transparent to show invincibility
-            if (currentHealth <= 0)
+            if (currentHealth <= 0 && canDie)
             {
                 PlayerController.instance.gameObject.SetActive(false);
 
@@ -68,6 +70,10 @@ public class PlayerHealthController : MonoBehaviour
 
                 AudioManager.instance.PlaySFX(playerDeathSound);
                 AudioManager.instance.PlayGameoverMusic();
+            }
+            if(!canDie && currentHealth < 1)
+            {
+                currentHealth = 1;
             }
             UIController.instance.healthSlider.value = currentHealth;
 

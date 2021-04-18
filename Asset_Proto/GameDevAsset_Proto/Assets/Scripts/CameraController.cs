@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
 
     private bool bigMapActive;
 
-    public bool isBossRoom;
+    public bool isBossRoom, isTutRoom;
 
 
     private void Awake()
@@ -24,9 +24,17 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (isBossRoom)
+        if (isBossRoom || isTutRoom)
         {
             target = PlayerController.instance.transform;
+        }
+        if (isTutRoom)
+        {
+            PlayerHealthController.instance.canDie = false;
+        }
+        else
+        {
+            PlayerHealthController.instance.canDie = true;
         }
     }
 

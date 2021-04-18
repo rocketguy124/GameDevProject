@@ -280,6 +280,10 @@ public class PlayerController : MonoBehaviour, IHasCooldown
             UIController.instance.bossNameText.text = collision.GetComponent<BossArenaTrigger>().ReturnBossNameFromInt(0);
             UIController.instance.bossHealthBar.gameObject.SetActive(true);
         }
+        if(collision.name == "TutCameraTrigger")
+        {
+            CameraController.instance.ChangeCameraTarget(gameObject.transform);
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

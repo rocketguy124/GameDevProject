@@ -46,12 +46,15 @@ public class UIController : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        DontDestroyOnLoad(gameObject);
-
+        
     }
     // Start is called before the first frame update
     void Start()
     {
+        if (!CameraController.instance.isTutRoom)
+        {
+            DontDestroyOnLoad(gameObject);
+        }
         fadingFromBlack = true;
         fadingToBlack = false;
 

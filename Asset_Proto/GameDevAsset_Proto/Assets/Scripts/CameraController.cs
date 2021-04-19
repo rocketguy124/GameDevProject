@@ -45,7 +45,7 @@ public class CameraController : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.position.x, target.position.y, -10f), transitionSpeed * Time.deltaTime);
         }
-        if (Input.GetKeyDown(KeyCode.M) && !isBossRoom)
+        if (Input.GetKeyDown(KeyCode.M) && !isBossRoom && !isTutRoom)
         {
             if (!bigMapActive)
             {

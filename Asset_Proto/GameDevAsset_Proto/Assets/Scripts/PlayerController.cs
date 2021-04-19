@@ -82,12 +82,15 @@ public class PlayerController : MonoBehaviour, IHasCooldown
     private void Awake()
     {
         instance = this;
-        DontDestroyOnLoad(gameObject); 
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        if (!CameraController.instance.isTutRoom)
+        {
+            DontDestroyOnLoad(gameObject);
+        }
         theRB = gameObject.GetComponent<Rigidbody2D>();
         timemanager = GameObject.FindGameObjectWithTag("TimeManager").GetComponent<TimeManager>();
 
@@ -333,6 +336,7 @@ public class PlayerController : MonoBehaviour, IHasCooldown
         else
         {
             Inv_Out = false;
+            //Debug.Log("Inventory Complete Inv should be false");
             //Debug.Log("Inventory Complete Inv should be false");
         }
         

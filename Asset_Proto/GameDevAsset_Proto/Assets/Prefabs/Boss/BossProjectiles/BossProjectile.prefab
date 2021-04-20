@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8d3e4412f5de98429c86e19e1c9748c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 1000
   enemyProjectileImpactSound: 22
   TimeBeforeAffected: 0
   bossProjectileTimeBody: {fileID: 6109504068894436639}

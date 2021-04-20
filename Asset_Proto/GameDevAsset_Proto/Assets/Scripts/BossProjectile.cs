@@ -47,6 +47,8 @@ public class BossProjectile : MonoBehaviour
         }
         if (!timemanager.TimeIsStopped)
         {
+            Debug.Log(direction);
+            Debug.Log(speed);
             theRB.velocity = direction * speed * Time.deltaTime;
             Debug.Log(theRB.velocity);
         }

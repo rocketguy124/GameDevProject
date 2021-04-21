@@ -105,6 +105,7 @@ MonoBehaviour:
     type: 3}
   damageToGive: 75
   impactSound: 22
+  TimeBeforeAffected: 0
 --- !u!61 &8279954479963234289
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -165,3 +166,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimeBeforeAffected: 0
+  IsStopped: 0

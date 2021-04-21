@@ -362,6 +362,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelGenerator
       objectReference: {fileID: 0}
+    - target: {fileID: 5167505200305074127, guid: bc262ad76aee4634ea79c72dae2b7574,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc262ad76aee4634ea79c72dae2b7574, type: 3}
 --- !u!1001 &1145263336

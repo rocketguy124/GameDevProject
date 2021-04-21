@@ -25,6 +25,7 @@ public class UIController : MonoBehaviour
     [Header("WeaponElements")]
     public Image currentStaff;
     public Text staffText;
+    public Text staffStatsText;
 
     [Header("SceneManagement")]
     public string newGameScene;
@@ -60,6 +61,7 @@ public class UIController : MonoBehaviour
 
         currentStaff.sprite = PlayerController.instance.availableStaffs[PlayerController.instance.currentStaff].staffUI;
         staffText.text = PlayerController.instance.availableStaffs[PlayerController.instance.currentStaff].weaponName;
+        staffStatsText.text = "DMG->" + PlayerController.instance.availableStaffs[PlayerController.instance.currentStaff].damageToGive + " FR->" + (1f / PlayerController.instance.availableStaffs[PlayerController.instance.currentStaff].timeBetweenShots).ToString("n2");
     }
 
     // Update is called once per frame

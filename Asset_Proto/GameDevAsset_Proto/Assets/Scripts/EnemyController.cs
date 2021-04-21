@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class EnemyController : MonoBehaviour
 {
@@ -37,9 +39,15 @@ public class EnemyController : MonoBehaviour
 
     [Header("Animation")]
     public Animator enemyAnim;
+    public GameObject healthBarUI;
+    public Slider healthSlider;
+    [Header("HitText")]
+    public GameObject damageTextPrefab;
+    private string textToDisplay;
 
     [Header("Stats")]
     public int enemyHealth = 150;
+    public int maxHealth;
 
     [Header("FX")]
     public GameObject[] deathSplats;
@@ -71,6 +79,11 @@ public class EnemyController : MonoBehaviour
     {
         theRB = GetComponent<Rigidbody2D>();
         timemanager = GameObject.FindGameObjectWithTag("TimeManager").GetComponent<TimeManager>();
+        healthSlider.maxValue = enemyHealth;
+        healthSlider.value = enemyHealth;
+        maxHealth = enemyHealth;
+        healthBarUI.SetActive(false);
+
 
         if (shouldWander)
         {
@@ -84,6 +97,10 @@ public class EnemyController : MonoBehaviour
     {
         TimeBeforeAffectedTimer -= Time.deltaTime; // minus 1 per second
 
+        if(enemyHealth< maxHealth)
+        {
+            healthBarUI.SetActive(true);
+        }
         if (TimeBeforeAffectedTimer <= 0f)
         {
             CanBeAffected = true; // Will be affected by timestop
@@ -221,6 +238,12 @@ public class EnemyController : MonoBehaviour
 
         StartCoroutine(EnemyBlinkingRed());
 
+        healthSlider.value = enemyHealth;
+
+        Debug.Log(healthSlider.value);
+        GameObject hitText = Instantiate(damageTextPrefab, transform.position, transform.rotation);
+        hitText.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(amountToDeal.ToString());
+        hitText.transform.GetChild(0).GetComponent<TextMeshPro>().faceColor = Color.yellow;
 
         Instantiate(hitFX, transform.position, transform.rotation);
 

@@ -14,9 +14,14 @@ public class VictoryScreen : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1f;
-        Destroy(PlayerController.instance.gameObject);
-        Destroy(UIController.instance.gameObject);
-
+        if (PlayerController.instance != null)
+        {
+            Destroy(PlayerController.instance.gameObject);
+        }
+        if (UIController.instance != null)
+        {
+            Destroy(UIController.instance.gameObject);
+        }
     }
 
     // Update is called once per frame

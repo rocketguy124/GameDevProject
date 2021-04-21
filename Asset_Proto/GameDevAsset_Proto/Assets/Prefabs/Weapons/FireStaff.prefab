@@ -130,6 +130,7 @@ MonoBehaviour:
     type: 3}
   firePoint: {fileID: 8718554655558222799}
   timeBetweenShots: 0.75
+  damageToGive: 75
   weaponName: FireStaff
   staffUI: {fileID: 21300000, guid: aa5ffee270f252c4b89ca39fb9f897ea, type: 3}
   weaponCost: 35

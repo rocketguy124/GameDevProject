@@ -131,6 +131,7 @@ MonoBehaviour:
     type: 3}
   firePoint: {fileID: 2275847988765381190}
   timeBetweenShots: 0.2
+  damageToGive: 20
   weaponName: PoisonStaff
   staffUI: {fileID: 6774144644806117822, guid: a9fbdb1eecc24ca4db883062e9d7389c, type: 3}
   weaponCost: 35

@@ -6949,6 +6949,7 @@ MonoBehaviour:
   mainCam: {fileID: 1681528890}
   bigMapCam: {fileID: 577060970}
   isBossRoom: 1
+  isTutRoom: 0
 --- !u!114 &1681528893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7241,10 +7242,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 260900260471a99429c041456f86825e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 500
+  currentHealth: 1000
   deathFX: {fileID: 4715327413259860823, guid: 9423933ea33e8b94b9abf409f895a63c, type: 3}
   levelExit: {fileID: 783490844}
   hitFX: {fileID: 8217655504449971081, guid: bf7c63e27203525479c38b9b86feeaec, type: 3}
+  damageTextPrefab: {fileID: 9128368715015054169, guid: c82272451642c824bbdcdbd12f132143,
+    type: 3}
+  theSR: {fileID: 551489511}
+  invincLength: 2.5
+  invincCount: 0
   actions: []
   theRB: {fileID: 0}
   moveDirection: {x: 0, y: 0}
@@ -7267,6 +7273,192 @@ MonoBehaviour:
       shouldShoot: 1
       moveSpeed: 4
       pointToMoveTo: {fileID: 0}
+      thingToShoot: {fileID: 1836824153873764030, guid: bc676120821ddc4498d6bcaaa6cbd2f0,
+        type: 3}
+      timeBetweenShots: 0.5
+      shotPoints:
+      - {fileID: 1317320743}
+      - {fileID: 1617060278}
+      - {fileID: 57899273}
+      - {fileID: 2011966285}
+    endPhasehealth: 750
+  - actions:
+    - actionLength: 5
+      shouldMove: 1
+      shouldChase: 0
+      moveToPoints: 1
+      shouldShoot: 1
+      moveSpeed: 4
+      pointToMoveTo: {fileID: 1784566199}
+      thingToShoot: {fileID: 1836824153873764030, guid: bc676120821ddc4498d6bcaaa6cbd2f0,
+        type: 3}
+      timeBetweenShots: 0.5
+      shotPoints:
+      - {fileID: 1317320743}
+      - {fileID: 1617060278}
+      - {fileID: 57899273}
+      - {fileID: 2011966285}
+    - actionLength: 5
+      shouldMove: 1
+      shouldChase: 0
+      moveToPoints: 1
+      shouldShoot: 1
+      moveSpeed: 4
+      pointToMoveTo: {fileID: 780494968}
+      thingToShoot: {fileID: 1836824153873764030, guid: bc676120821ddc4498d6bcaaa6cbd2f0,
+        type: 3}
+      timeBetweenShots: 0.5
+      shotPoints:
+      - {fileID: 1317320743}
+      - {fileID: 1617060278}
+      - {fileID: 57899273}
+      - {fileID: 2011966285}
+    - actionLength: 5
+      shouldMove: 1
+      shouldChase: 0
+      moveToPoints: 1
+      shouldShoot: 1
+      moveSpeed: 4
+      pointToMoveTo: {fileID: 843354674}
+      thingToShoot: {fileID: 1836824153873764030, guid: bc676120821ddc4498d6bcaaa6cbd2f0,
+        type: 3}
+      timeBetweenShots: 0.5
+      shotPoints:
+      - {fileID: 1317320743}
+      - {fileID: 1617060278}
+      - {fileID: 57899273}
+      - {fileID: 2011966285}
+    - actionLength: 5
+      shouldMove: 1
+      shouldChase: 0
+      moveToPoints: 1
+      shouldShoot: 1
+      moveSpeed: 4
+      pointToMoveTo: {fileID: 901434259}
+      thingToShoot: {fileID: 1836824153873764030, guid: bc676120821ddc4498d6bcaaa6cbd2f0,
+        type: 3}
+      timeBetweenShots: 0.5
+      shotPoints:
+      - {fileID: 1317320743}
+      - {fileID: 1617060278}
+      - {fileID: 57899273}
+      - {fileID: 2011966285}
+    endPhasehealth: 500
+  - actions:
+    - actionLength: 5
+      shouldMove: 1
+      shouldChase: 0
+      moveToPoints: 1
+      shouldShoot: 1
+      moveSpeed: 4
+      pointToMoveTo: {fileID: 1784566199}
+      thingToShoot: {fileID: 1836824153873764030, guid: bc676120821ddc4498d6bcaaa6cbd2f0,
+        type: 3}
+      timeBetweenShots: 0.5
+      shotPoints:
+      - {fileID: 1317320743}
+      - {fileID: 1617060278}
+      - {fileID: 57899273}
+      - {fileID: 2011966285}
+    - actionLength: 5
+      shouldMove: 1
+      shouldChase: 0
+      moveToPoints: 1
+      shouldShoot: 1
+      moveSpeed: 4
+      pointToMoveTo: {fileID: 780494968}
+      thingToShoot: {fileID: 1836824153873764030, guid: bc676120821ddc4498d6bcaaa6cbd2f0,
+        type: 3}
+      timeBetweenShots: 0.5
+      shotPoints:
+      - {fileID: 1317320743}
+      - {fileID: 1617060278}
+      - {fileID: 57899273}
+      - {fileID: 2011966285}
+    - actionLength: 5
+      shouldMove: 1
+      shouldChase: 0
+      moveToPoints: 1
+      shouldShoot: 1
+      moveSpeed: 4
+      pointToMoveTo: {fileID: 843354674}
+      thingToShoot: {fileID: 1836824153873764030, guid: bc676120821ddc4498d6bcaaa6cbd2f0,
+        type: 3}
+      timeBetweenShots: 0.5
+      shotPoints:
+      - {fileID: 1317320743}
+      - {fileID: 1617060278}
+      - {fileID: 57899273}
+      - {fileID: 2011966285}
+    - actionLength: 5
+      shouldMove: 1
+      shouldChase: 0
+      moveToPoints: 1
+      shouldShoot: 1
+      moveSpeed: 4
+      pointToMoveTo: {fileID: 901434259}
+      thingToShoot: {fileID: 1836824153873764030, guid: bc676120821ddc4498d6bcaaa6cbd2f0,
+        type: 3}
+      timeBetweenShots: 0.5
+      shotPoints:
+      - {fileID: 1317320743}
+      - {fileID: 1617060278}
+      - {fileID: 57899273}
+      - {fileID: 2011966285}
+    endPhasehealth: 250
+  - actions:
+    - actionLength: 5
+      shouldMove: 1
+      shouldChase: 0
+      moveToPoints: 1
+      shouldShoot: 1
+      moveSpeed: 4
+      pointToMoveTo: {fileID: 1784566199}
+      thingToShoot: {fileID: 1836824153873764030, guid: bc676120821ddc4498d6bcaaa6cbd2f0,
+        type: 3}
+      timeBetweenShots: 0.5
+      shotPoints:
+      - {fileID: 1317320743}
+      - {fileID: 1617060278}
+      - {fileID: 57899273}
+      - {fileID: 2011966285}
+    - actionLength: 5
+      shouldMove: 1
+      shouldChase: 0
+      moveToPoints: 1
+      shouldShoot: 1
+      moveSpeed: 4
+      pointToMoveTo: {fileID: 780494968}
+      thingToShoot: {fileID: 1836824153873764030, guid: bc676120821ddc4498d6bcaaa6cbd2f0,
+        type: 3}
+      timeBetweenShots: 0.5
+      shotPoints:
+      - {fileID: 1317320743}
+      - {fileID: 1617060278}
+      - {fileID: 57899273}
+      - {fileID: 2011966285}
+    - actionLength: 5
+      shouldMove: 1
+      shouldChase: 0
+      moveToPoints: 1
+      shouldShoot: 1
+      moveSpeed: 4
+      pointToMoveTo: {fileID: 843354674}
+      thingToShoot: {fileID: 1836824153873764030, guid: bc676120821ddc4498d6bcaaa6cbd2f0,
+        type: 3}
+      timeBetweenShots: 0.5
+      shotPoints:
+      - {fileID: 1317320743}
+      - {fileID: 1617060278}
+      - {fileID: 57899273}
+      - {fileID: 2011966285}
+    - actionLength: 5
+      shouldMove: 1
+      shouldChase: 0
+      moveToPoints: 1
+      shouldShoot: 1
+      moveSpeed: 4
+      pointToMoveTo: {fileID: 901434259}
       thingToShoot: {fileID: 1836824153873764030, guid: bc676120821ddc4498d6bcaaa6cbd2f0,
         type: 3}
       timeBetweenShots: 0.5

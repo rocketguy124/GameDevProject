@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerHealthController : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class PlayerHealthController : MonoBehaviour
     [Header("Invincibility")]
     public float invincLength;
     public float invincCount;
+
+    [Header("HitText")]
+    public GameObject damageTextPrefab;
+    private string textToDisplay;
 
     [Header("Sound")]
     public int playerDeathSound;
@@ -50,13 +55,16 @@ public class PlayerHealthController : MonoBehaviour
             }
         }
     }
-    public void damagePlayer()
+    public void damagePlayer(int dmgToGive)
     {
         if (invincCount <= 0)
         {
 
             currentHealth--;
 
+            GameObject hitText = Instantiate(damageTextPrefab, PlayerController.instance.transform.position, transform.rotation);
+            hitText.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(dmgToGive.ToString());
+            hitText.transform.GetChild(0).GetComponent<TextMeshPro>().faceColor = Color.red;
             AudioManager.instance.PlaySFX(playerHurtSound);
 
             invincCount = invincLength; //setting invincibility timer
@@ -90,7 +98,10 @@ public class PlayerHealthController : MonoBehaviour
     public void HealPlayer(int healAmount)
     {
         currentHealth += healAmount;
-        if(currentHealth > maxHealth)
+        GameObject hitText = Instantiate(damageTextPrefab, PlayerController.instance.transform.position, transform.rotation);
+        hitText.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(healAmount.ToString());
+        hitText.transform.GetChild(0).GetComponent<TextMeshPro>().faceColor = Color.green;
+        if (currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
         }

@@ -5,6 +5,8 @@ using UnityEngine;
 public class BossProjectile : MonoBehaviour
 {
     public float speed;
+    public int DamageToGive = 1;
+
 
     private Vector3 direction;
     [Header("Sound")]
@@ -47,10 +49,7 @@ public class BossProjectile : MonoBehaviour
         }
         if (!timemanager.TimeIsStopped)
         {
-            Debug.Log(direction);
-            Debug.Log(speed);
             theRB.velocity = direction * speed * Time.deltaTime;
-            Debug.Log(theRB.velocity);
         }
         if (CanBeAffected && timemanager.TimeIsStopped && !IsStopped)
         {
@@ -72,7 +71,7 @@ public class BossProjectile : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            PlayerHealthController.instance.damagePlayer();
+            PlayerHealthController.instance.damagePlayer(DamageToGive);
         }
         Debug.Log(collision.name);
         Destroy(gameObject);

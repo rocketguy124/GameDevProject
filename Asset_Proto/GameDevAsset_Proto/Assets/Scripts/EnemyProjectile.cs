@@ -7,6 +7,8 @@ public class EnemyProjectile : MonoBehaviour
     public float speed;
     public Rigidbody2D theRB;
 
+    public int DamageToGive = 1;
+
     private Vector3 direction;
     [Header("Sound")]
     public int enemyProjectileImpactSound;
@@ -87,7 +89,7 @@ public class EnemyProjectile : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            PlayerHealthController.instance.damagePlayer();
+            PlayerHealthController.instance.damagePlayer(DamageToGive);
         }
 
         Destroy(gameObject);
@@ -96,5 +98,9 @@ public class EnemyProjectile : MonoBehaviour
     private void OnBecameInvisible()
     {
         Destroy(gameObject, 3f);
+    }
+    public int GetDamage()
+    {
+        return DamageToGive;
     }
 }

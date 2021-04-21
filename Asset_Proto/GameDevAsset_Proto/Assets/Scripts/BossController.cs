@@ -1,15 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BossController : MonoBehaviour
 {
     public static BossController instance;
 
+    [Header("General Stats and FX")]
     public int currentHealth;
     public GameObject deathFX;
     public GameObject levelExit;
     public GameObject hitFX;
+
+    [Header("HitText")]
+    public GameObject damageTextPrefab;
+    private string textToDisplay;
+
+    [Header("Invincibility")]
+    [SerializeField]private SpriteRenderer theSR;
+    public float invincLength;
+    public float invincCount;
 
     public BossAction[] actions;
     private int currentAction;
@@ -59,6 +70,17 @@ public class BossController : MonoBehaviour
     void Update()
     {
         TimeBeforeAffectedTimer -= Time.deltaTime; // minus 1 per second
+
+        if (invincCount > 0)
+        {
+            invincCount -= Time.deltaTime; //Counting down invincibility
+
+            if (invincCount <= 0)
+            {
+                theSR.color = new Color(theSR.color.r, theSR.color.g, theSR.color.b, 1f); //Making Player opaque to show hittable again
+
+            }
+        }
 
         if (TimeBeforeAffectedTimer <= 0f)
         {
@@ -131,44 +153,53 @@ public class BossController : MonoBehaviour
     }
     public void TakeDamage(int damageAmount)
     {
-        currentHealth -= damageAmount;
-
-        //Instantiate(hitFX, transform.position, transform.rotation);
-
-        if (currentHealth <= 0)
+        if (invincCount <= 0)
         {
-            
+            currentHealth -= damageAmount;
 
-            if (Vector3.Distance(PlayerController.instance.transform.position, levelExit.transform.position) < 2f)//Prevent player from Instantly moving on
+            GameObject hitText = Instantiate(damageTextPrefab, transform.position, transform.rotation);
+            hitText.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(damageAmount.ToString());
+            hitText.transform.GetChild(0).GetComponent<TextMeshPro>().faceColor = Color.yellow;
+
+            //Instantiate(hitFX, transform.position, transform.rotation);
+
+            if (currentHealth <= 0) //Boss Death start
             {
-                levelExit.transform.position += new Vector3(4f, 0f, 0f);
-            }
-            levelExit.SetActive(true); //Exit Appearing after Boss Death
 
-            for (int i = 0; i < 5; i++)
+
+                if (Vector3.Distance(PlayerController.instance.transform.position, levelExit.transform.position) < 2f)//Prevent player from Instantly moving on
+                {
+                    levelExit.transform.position += new Vector3(4f, 0f, 0f);
+                }
+                levelExit.SetActive(true); //Exit Appearing after Boss Death
+
+                for (int i = 0; i < 5; i++)
+                {
+                    float randomxPosCoord = Random.Range(0f, 3f);
+                    float randomyPosCoord = Random.Range(0f, 3f);
+
+                    Instantiate(deathFX, transform.position + new Vector3(randomxPosCoord, randomyPosCoord, 0f), transform.rotation);//Boss Death effects
+                }
+
+                gameObject.SetActive(false);//Boss Deactivated
+                UIController.instance.bossHealthBar.gameObject.SetActive(false);
+            }
+
+            else
             {
-                float randomxPosCoord = Random.Range(0f, 3f);
-                float randomyPosCoord = Random.Range(0f, 3f);
+                if (currentHealth <= phases[currentPhase].endPhasehealth && currentPhase < phases.Length - 1)
+                {
+                    invincCount = invincLength;
 
-                Instantiate(deathFX, transform.position + new Vector3(randomxPosCoord, randomyPosCoord, 0f), transform.rotation);//Boss Death effects
+                    theSR.color = new Color(theSR.color.r, theSR.color.g, theSR.color.b, 0.5f); //Making Boss Transparent to show invincible
+                    currentPhase++;
+                    actions = phases[currentPhase].actions;
+                    currentAction = 0;
+                    actionCounter = actions[currentAction].actionLength;
+                }
             }
-            
-            gameObject.SetActive(false);//Boss Deactivated
-            UIController.instance.bossHealthBar.gameObject.SetActive(false);
-
+            UIController.instance.bossHealthBar.value = currentHealth;
         }
-        else
-        {
-            if(currentHealth <= phases[currentPhase].endPhasehealth && currentPhase < phases.Length-1)
-            {
-                currentPhase++;
-                actions = phases[currentPhase].actions;
-                currentAction = 0;
-                actionCounter = actions[currentAction].actionLength;
-            }
-        }
-        UIController.instance.bossHealthBar.value = currentHealth;
-
     }
 
 }

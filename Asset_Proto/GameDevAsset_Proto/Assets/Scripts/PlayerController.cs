@@ -265,6 +265,7 @@ public class PlayerController : MonoBehaviour, IHasCooldown
 
         UIController.instance.currentStaff.sprite = availableStaffs[currentStaff].staffUI;
         UIController.instance.staffText.text = availableStaffs[currentStaff].weaponName;
+        UIController.instance.staffStatsText.text = "DMG->" + availableStaffs[currentStaff].damageToGive + " FR->" + (1f/availableStaffs[currentStaff].timeBetweenShots).ToString("n2");
     }
 
 

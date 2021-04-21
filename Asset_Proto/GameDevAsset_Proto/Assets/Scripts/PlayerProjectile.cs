@@ -79,4 +79,9 @@ public class PlayerProjectile : MonoBehaviour
     {
         Destroy(gameObject, 1f);
     }
+
+    public int GetDamage()
+    {
+        return damageToGive;
+    }
 }

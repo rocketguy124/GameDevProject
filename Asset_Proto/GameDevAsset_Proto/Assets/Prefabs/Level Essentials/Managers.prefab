@@ -2581,10 +2581,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d1a3fc1103ff8849a7320207ee4afa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canDie: 1
   currentHealth: 0
   maxHealth: 5
   invincLength: 1
   invincCount: 0
+  damageTextPrefab: {fileID: 9128368715015054169, guid: c82272451642c824bbdcdbd12f132143,
+    type: 3}
   playerDeathSound: 21
   playerHurtSound: 11
 --- !u!114 &4843169518683124708

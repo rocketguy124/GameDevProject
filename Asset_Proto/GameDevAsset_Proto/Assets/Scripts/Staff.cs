@@ -9,6 +9,7 @@ public class Staff : MonoBehaviour
     public Transform firePoint;
     public float timeBetweenShots;
     private float shotCounter;
+    public int damageToGive;
 
     [Header("Weapon Info")]
     public string weaponName;
@@ -22,7 +23,7 @@ public class Staff : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        damageToGive = projectileToFire.GetComponent<PlayerProjectile>().damageToGive;
     }
 
     // Update is called once per frame

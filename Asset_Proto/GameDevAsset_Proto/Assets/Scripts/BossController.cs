@@ -8,6 +8,7 @@ public class BossController : MonoBehaviour
     public static BossController instance;
 
     [Header("General Stats and FX")]
+    public bool inCombat;
     public int currentHealth;
     public GameObject deathFX;
     public GameObject levelExit;
@@ -57,7 +58,7 @@ public class BossController : MonoBehaviour
     {
         theRB = GetComponent<Rigidbody2D>();
         timemanager = GameObject.FindGameObjectWithTag("TimeManager").GetComponent<TimeManager>();
-
+        inCombat = false;
 
         actions = phases[currentPhase].actions;
         actionCounter = actions[currentAction].actionLength;
@@ -69,85 +70,88 @@ public class BossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TimeBeforeAffectedTimer -= Time.deltaTime; // minus 1 per second
-
-        if (invincCount > 0)
+        if (inCombat)
         {
-            invincCount -= Time.deltaTime; //Counting down invincibility
+            TimeBeforeAffectedTimer -= Time.deltaTime; // minus 1 per second
 
-            if (invincCount <= 0)
+            if (invincCount > 0)
             {
-                theSR.color = new Color(theSR.color.r, theSR.color.g, theSR.color.b, 1f); //Making Player opaque to show hittable again
+                invincCount -= Time.deltaTime; //Counting down invincibility
 
-            }
-        }
-
-        if (TimeBeforeAffectedTimer <= 0f)
-        {
-            CanBeAffected = true; // Will be affected by timestop
-        }
-        if (!timemanager.TimeIsStopped)
-        {
-            if (actionCounter > 0)
-            {
-                actionCounter -= Time.deltaTime;
-
-                //Movement
-                moveDirection = Vector2.zero;
-
-                if (actions[currentAction].shouldMove)
+                if (invincCount <= 0)
                 {
-                    if (actions[currentAction].shouldChase)
-                    {
-                        moveDirection = PlayerController.instance.transform.position - transform.position;
-                        moveDirection.Normalize();
-                    }
+                    theSR.color = new Color(theSR.color.r, theSR.color.g, theSR.color.b, 1f); //Making Player opaque to show hittable again
 
-                    if (actions[currentAction].moveToPoints && Vector3.Distance(transform.position, actions[currentAction].pointToMoveTo.position) > 0.5f)
-                    {
-                        moveDirection = actions[currentAction].pointToMoveTo.position - transform.position;
-                        moveDirection.Normalize();
-                    }
                 }
+            }
 
-                theRB.velocity = moveDirection * actions[currentAction].moveSpeed;
-
-                //Shooting
-                if (actions[currentAction].shouldShoot)
+            if (TimeBeforeAffectedTimer <= 0f)
+            {
+                CanBeAffected = true; // Will be affected by timestop
+            }
+            if (!timemanager.TimeIsStopped)
+            {
+                if (actionCounter > 0)
                 {
-                    shotCounter -= Time.deltaTime;
-                    if (shotCounter <= 0)
+                    actionCounter -= Time.deltaTime;
+
+                    //Movement
+                    moveDirection = Vector2.zero;
+
+                    if (actions[currentAction].shouldMove)
                     {
-                        shotCounter = actions[currentAction].timeBetweenShots;
-                        foreach (Transform t in actions[currentAction].shotPoints)
+                        if (actions[currentAction].shouldChase)
                         {
-                            Instantiate(actions[currentAction].thingToShoot, t.position, t.rotation);
+                            moveDirection = PlayerController.instance.transform.position - transform.position;
+                            moveDirection.Normalize();
+                        }
+
+                        if (actions[currentAction].moveToPoints && Vector3.Distance(transform.position, actions[currentAction].pointToMoveTo.position) > 0.5f)
+                        {
+                            moveDirection = actions[currentAction].pointToMoveTo.position - transform.position;
+                            moveDirection.Normalize();
+                        }
+                    }
+
+                    theRB.velocity = moveDirection * actions[currentAction].moveSpeed;
+
+                    //Shooting
+                    if (actions[currentAction].shouldShoot)
+                    {
+                        shotCounter -= Time.deltaTime;
+                        if (shotCounter <= 0)
+                        {
+                            shotCounter = actions[currentAction].timeBetweenShots;
+                            foreach (Transform t in actions[currentAction].shotPoints)
+                            {
+                                Instantiate(actions[currentAction].thingToShoot, t.position, t.rotation);
+                            }
                         }
                     }
                 }
-            }
-            else
-            {
-                currentAction++;
-                if (currentAction >= actions.Length)
+                else
                 {
-                    currentAction = 0;
+                    currentAction++;
+                    if (currentAction >= actions.Length)
+                    {
+                        currentAction = 0;
+                    }
+                    actionCounter = actions[currentAction].actionLength;
+
                 }
-                actionCounter = actions[currentAction].actionLength;
-
             }
-        }
-        if (CanBeAffected && timemanager.TimeIsStopped && !IsStopped)
-        {
-            if (theRB.velocity.magnitude >= 0f) //If Object is moving
+            if (CanBeAffected && timemanager.TimeIsStopped && !IsStopped)
             {
-                recordedVelocity = theRB.velocity.normalized; //records direction of movement
-                recordedMagnitude = theRB.velocity.magnitude; // records magitude of movement
+                if (theRB.velocity.magnitude >= 0f) //If Object is moving
+                {
+                    recordedVelocity = theRB.velocity.normalized; //records direction of movement
+                    recordedMagnitude = theRB.velocity.magnitude; // records magitude of movement
 
-                theRB.velocity = Vector3.zero; //makes the rigidbody stop moving
-                theRB.isKinematic = true; //not affected by forces
-                enemyTimeBody.IsStopped = true; // prevents this from looping
-                //enemyAnim.enabled = false;
+                    theRB.velocity = Vector3.zero; //makes the rigidbody stop moving
+                    theRB.isKinematic = true; //not affected by forces
+                    enemyTimeBody.IsStopped = true; // prevents this from looping
+                                                    //enemyAnim.enabled = false;
+                }
             }
         }
     }

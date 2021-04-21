@@ -1036,6 +1036,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Side_Torch
       objectReference: {fileID: 0}
+    - target: {fileID: 3673047575968421412, guid: 6bf7643f23b2a854a853b2b8700549e3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7564702206063626077, guid: 6bf7643f23b2a854a853b2b8700549e3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1164,6 +1169,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Torch
+      objectReference: {fileID: 0}
+    - target: {fileID: 4614698791211894870, guid: eee658629ed1c8b41b9bd6f621415830,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eee658629ed1c8b41b9bd6f621415830, type: 3}
@@ -1302,6 +1312,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CandleStick
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804161091662449493, guid: cf17b451eaa0fc14995f6eea164e9a38,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf17b451eaa0fc14995f6eea164e9a38, type: 3}

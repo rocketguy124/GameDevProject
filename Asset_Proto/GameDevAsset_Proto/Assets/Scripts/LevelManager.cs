@@ -39,10 +39,14 @@ public class LevelManager : MonoBehaviour
         {
             PauseUnPause();
         }
+#if UNITY_EDITOR
+
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             SceneManager.LoadScene("Boss1");
         }
+#endif
+
     }
 
     public IEnumerator LevelEnd()
@@ -60,6 +64,9 @@ public class LevelManager : MonoBehaviour
         CharacterTracker.instance.maxHealth = PlayerHealthController.instance.maxHealth;
 
         SceneManager.LoadScene(nextLevel);
+
+        UIController.instance.StartFadeFromBlack();
+
     }
 
     public void PauseUnPause()

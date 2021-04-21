@@ -112,6 +112,11 @@ public class UIController : MonoBehaviour
         fadingToBlack = true;
         fadingFromBlack = false;
     }
+    public void StartFadeFromBlack()
+    {
+        fadingToBlack = false;
+        fadingFromBlack = true;
+    }
     public void newGame()
     {
         Time.timeScale = 1f;

@@ -12,6 +12,9 @@ public class EnemyController : MonoBehaviour
     public SpriteRenderer theBody;
 
     [Header("AI")]
+    private bool isAttacked = false;
+    [SerializeField]private bool isActive = false;
+    [SerializeField] private bool hasBeenRevealed = false;
     public bool canSpawnMore;
     private bool hasSpawned = false;
     public GameObject spawnedMob;
@@ -74,6 +77,8 @@ public class EnemyController : MonoBehaviour
     private bool IsStopped;
     public TimeBody enemyTimeBody;
 
+    private float t = 5f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -83,6 +88,15 @@ public class EnemyController : MonoBehaviour
         healthSlider.value = enemyHealth;
         maxHealth = enemyHealth;
         healthBarUI.SetActive(false);
+
+        gameObject.SetActive(false);
+
+        if (isActive)
+        {
+            MakeActive();
+        }
+        
+
 
 
         if (shouldWander)
@@ -96,10 +110,19 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         TimeBeforeAffectedTimer -= Time.deltaTime; // minus 1 per second
-
-        if(enemyHealth< maxHealth)
+        if(gameObject.activeSelf && !hasBeenRevealed)
+        {
+            
+            hasBeenRevealed = true;
+            Instantiate(deathPoof, transform.position, transform.rotation); //Poof FX
+            
+            StartCoroutine(DelayedMovement());
+        }
+        
+        if (enemyHealth< maxHealth)
         {
             healthBarUI.SetActive(true);
+            isAttacked = true;
         }
         if (TimeBeforeAffectedTimer <= 0f)
         {
@@ -107,113 +130,116 @@ public class EnemyController : MonoBehaviour
         }
         if (!timemanager.TimeIsStopped)
         {
-            if (theBody.isVisible && PlayerController.instance.gameObject.activeInHierarchy)
+            if (isActive)
             {
-                moveDirection = Vector3.zero;
-
-                //Movement
-                if (Vector3.Distance(transform.position, PlayerController.instance.transform.position) <= rangeToChase && shouldChase)
+                if (theBody.isVisible && PlayerController.instance.gameObject.activeInHierarchy)
                 {
-                    if (canSpawnMore)
+                    moveDirection = Vector3.zero;
+
+                    //Movement
+                    if (Vector3.Distance(transform.position, PlayerController.instance.transform.position) <= rangeToChase && shouldChase || shouldChase && isAttacked)
                     {
-                        if (!hasSpawned)
+                        if (canSpawnMore)
                         {
-                            Instantiate(spawnedMob, firePoint.position, firePoint.rotation);
-                            Instantiate(deathPoof, firePoint.position, firePoint.rotation);
-                            hasSpawned = true;
+                            if (!hasSpawned)
+                            {
+                                Instantiate(spawnedMob, firePoint.position, firePoint.rotation);
+                                Instantiate(deathPoof, firePoint.position, firePoint.rotation);
+                                hasSpawned = true;
+                            }
+                        }
+                        moveDirection = PlayerController.instance.transform.position - transform.position;
+                    }
+                    else
+                    {
+                        if (shouldWander)
+                        {
+                            if (wanderMoveCounter > 0)
+                            {
+                                wanderMoveCounter -= Time.deltaTime;
+
+                                moveDirection = wanderDirection;
+
+                                if (wanderMoveCounter <= 0)
+                                {
+                                    wanderPauseCounter = Random.Range(wanderPauseTime * 0.75f, wanderPauseTime * 1.25f);
+                                }
+                            }
+                            if (wanderPauseCounter > 0)
+                            {
+                                wanderPauseCounter -= Time.deltaTime;
+
+                                if (wanderPauseCounter <= 0)
+                                {
+                                    wanderMoveCounter = Random.Range(wanderMoveTime * 0.75f, wanderMoveTime * 1.25f);
+
+                                    wanderDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f);
+                                }
+                            }
+                        }
+                        if (shouldPatrol)
+                        {
+                            moveDirection = patrolPoints[currentpatrolPoint].position - transform.position;
+                            if (Vector3.Distance(transform.position, patrolPoints[currentpatrolPoint].position) < 0.2f)
+                            {
+                                currentpatrolPoint++;
+                                if (currentpatrolPoint >= patrolPoints.Length)
+                                {
+                                    currentpatrolPoint = 0;
+                                }
+                            }
                         }
                     }
-                    moveDirection = PlayerController.instance.transform.position - transform.position;
+
+                    if (shouldRunAway && Vector3.Distance(transform.position, PlayerController.instance.transform.position) <= runAwayRange)
+                    {
+                        moveDirection = transform.position - PlayerController.instance.transform.position;
+
+                        if (canSpawnMore)
+                        {
+                            if (!hasSpawned)
+                            {
+                                Instantiate(spawnedMob, firePoint.position, firePoint.rotation);
+                                Instantiate(deathPoof, firePoint.position, firePoint.rotation);
+                                hasSpawned = true;
+                            }
+                        }
+                    }
+
+
+
+
+                    moveDirection.Normalize(); //MoveDirection Normalization
+                    theRB.velocity = moveDirection * moveSpeed; // Velocity Setting
+
+
+                    //AI should Shoot
+                    if (shouldShoot && Vector3.Distance(PlayerController.instance.transform.position, transform.position) < shootRange || shouldShoot && isAttacked)
+                    {
+                        fireCounter -= Time.deltaTime;
+                        if (fireCounter <= 0)
+                        {
+                            fireCounter = fireRate;
+                            Instantiate(enemyProjectile, firePoint.position, enemyProjectile.transform.rotation * Quaternion.Inverse(firePoint.rotation));
+                            AudioManager.instance.PlaySFX(enemyShootSound);
+                        }
+                    }
                 }
                 else
                 {
-                    if (shouldWander)
-                    {
-                        if (wanderMoveCounter > 0)
-                        {
-                            wanderMoveCounter -= Time.deltaTime;
-
-                            moveDirection = wanderDirection;
-
-                            if (wanderMoveCounter <= 0)
-                            {
-                                wanderPauseCounter = Random.Range(wanderPauseTime * 0.75f, wanderPauseTime * 1.25f);
-                            }
-                        }
-                        if (wanderPauseCounter > 0)
-                        {
-                            wanderPauseCounter -= Time.deltaTime;
-
-                            if (wanderPauseCounter <= 0)
-                            {
-                                wanderMoveCounter = Random.Range(wanderMoveTime * 0.75f, wanderMoveTime * 1.25f);
-
-                                wanderDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f);
-                            }
-                        }
-                    }
-                    if (shouldPatrol)
-                    {
-                        moveDirection = patrolPoints[currentpatrolPoint].position - transform.position;
-                        if (Vector3.Distance(transform.position, patrolPoints[currentpatrolPoint].position) < 0.2f)
-                        {
-                            currentpatrolPoint++;
-                            if (currentpatrolPoint >= patrolPoints.Length)
-                            {
-                                currentpatrolPoint = 0;
-                            }
-                        }
-                    }
+                    theRB.velocity = Vector2.zero;
                 }
 
-                if (shouldRunAway && Vector3.Distance(transform.position, PlayerController.instance.transform.position) <= runAwayRange)
+                enemyAnim.enabled = true;
+                //Animation
+                if (moveDirection != Vector3.zero)
                 {
-                    moveDirection = transform.position - PlayerController.instance.transform.position;
-
-                    if (canSpawnMore)
-                    {
-                        if (!hasSpawned)
-                        {
-                            Instantiate(spawnedMob, firePoint.position, firePoint.rotation);
-                            Instantiate(deathPoof, firePoint.position, firePoint.rotation);
-                            hasSpawned = true;
-                        }
-                    }
+                    enemyAnim.SetBool("isMoving", true);
                 }
-                
-
-
-
-                moveDirection.Normalize(); //MoveDirection Normalization
-                theRB.velocity = moveDirection * moveSpeed; // Velocity Setting
-
-
-                //AI should Shoot
-                if (shouldShoot && Vector3.Distance(PlayerController.instance.transform.position, transform.position) < shootRange)
+                else
                 {
-                    fireCounter -= Time.deltaTime;
-                    if (fireCounter <= 0)
-                    {
-                        fireCounter = fireRate;
-                        Instantiate(enemyProjectile, firePoint.position, enemyProjectile.transform.rotation * Quaternion.Inverse(firePoint.rotation));
-                        AudioManager.instance.PlaySFX(enemyShootSound);
-                    }
+                    enemyAnim.SetBool("isMoving", false);
                 }
-            }
-            else
-            {
-                theRB.velocity = Vector2.zero;
-            }
-
-            enemyAnim.enabled = true;
-            //Animation
-            if (moveDirection != Vector3.zero)
-            {
-                enemyAnim.SetBool("isMoving", true);
-            }
-            else
-            {
-                enemyAnim.SetBool("isMoving", false);
             }
         }
         //Debug.Log(CanBeAffected + ", " + timemanager.TimeIsStopped + ", " + !IsStopped);
@@ -230,6 +256,7 @@ public class EnemyController : MonoBehaviour
                 enemyAnim.enabled = false;
             }
         }
+        
     }
 
     public void DamageEnemy(int amountToDeal)
@@ -240,7 +267,6 @@ public class EnemyController : MonoBehaviour
 
         healthSlider.value = enemyHealth;
 
-        Debug.Log(healthSlider.value);
         GameObject hitText = Instantiate(damageTextPrefab, transform.position, transform.rotation);
         hitText.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(amountToDeal.ToString());
         hitText.transform.GetChild(0).GetComponent<TextMeshPro>().faceColor = Color.yellow;
@@ -278,6 +304,11 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    public void MakeActive()
+    {
+        gameObject.SetActive(true);
+    }
+
 
     public IEnumerator EnemyBlinkingRed()
     {
@@ -290,5 +321,13 @@ public class EnemyController : MonoBehaviour
         
         yield return new WaitForSeconds(0.1f);
         theBody.color = new Color(tempRedValue, tempGreenValue, tempBlueValue, 1f);
+    }
+
+    public IEnumerator DelayedMovement()
+    {
+        theRB.velocity = Vector2.zero;
+        yield return new WaitForSeconds(0.8f);
+        isActive = true;
+        
     }
 }

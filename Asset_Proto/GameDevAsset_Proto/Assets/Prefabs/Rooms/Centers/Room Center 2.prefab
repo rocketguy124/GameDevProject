@@ -2657,6 +2657,7 @@ MonoBehaviour:
   - {fileID: 3296825367159738656}
   - {fileID: 3296825368120081267}
   theRoom: {fileID: 0}
+  enemiesActive: 0
 --- !u!1 &9018772360744287851
 GameObject:
   m_ObjectHideFlags: 0
@@ -2779,6 +2780,16 @@ PrefabInstance:
     - target: {fileID: 1027563318058313454, guid: 8d1305b3f3d74af45ad961cb3bdf92d5,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323350206051256745, guid: 8d1305b3f3d74af45ad961cb3bdf92d5,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323350206051256745, guid: 8d1305b3f3d74af45ad961cb3bdf92d5,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3537,6 +3548,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1323350206051256745, guid: 8d1305b3f3d74af45ad961cb3bdf92d5,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323350206051256745, guid: 8d1305b3f3d74af45ad961cb3bdf92d5,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d1305b3f3d74af45ad961cb3bdf92d5, type: 3}
 --- !u!4 &3296825368120081265 stripped
@@ -3916,6 +3937,16 @@ PrefabInstance:
     - target: {fileID: 1027563318058313454, guid: 8d1305b3f3d74af45ad961cb3bdf92d5,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323350206051256745, guid: 8d1305b3f3d74af45ad961cb3bdf92d5,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1323350206051256745, guid: 8d1305b3f3d74af45ad961cb3bdf92d5,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

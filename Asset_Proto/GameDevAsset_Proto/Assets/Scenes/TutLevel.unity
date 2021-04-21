@@ -1109,6 +1109,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.3781376, y: 6.3058043}
   m_EdgeRadius: 0
+--- !u!1 &166253004 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1027563318058313452, guid: 8d1305b3f3d74af45ad961cb3bdf92d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1596348869}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &166253009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166253004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 107f381e33184254586779a485f22d4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &167251190
 GameObject:
   m_ObjectHideFlags: 0
@@ -10765,6 +10783,21 @@ PrefabInstance:
         type: 3}
       propertyPath: shouldShoot
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1027563318058313448, guid: 8d1305b3f3d74af45ad961cb3bdf92d5,
+        type: 3}
+      propertyPath: isActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1027563318058313448, guid: 8d1305b3f3d74af45ad961cb3bdf92d5,
+        type: 3}
+      propertyPath: hasBeenRevealed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1027563318058313448, guid: 8d1305b3f3d74af45ad961cb3bdf92d5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1027563318058313452, guid: 8d1305b3f3d74af45ad961cb3bdf92d5,
         type: 3}
@@ -21446,6 +21479,7 @@ MonoBehaviour:
   openWhenEnemiesCleared: 0
   enemies: []
   theRoom: {fileID: 8668412054570511407}
+  enemiesActive: 0
 --- !u!1 &74620591758769840
 GameObject:
   m_ObjectHideFlags: 0
@@ -36557,6 +36591,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 324360839}
   theRoom: {fileID: 1671223919428609090}
+  enemiesActive: 0
 --- !u!1001 &4912885677947702480
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36657,6 +36692,7 @@ MonoBehaviour:
   - {fileID: 5862228563871362666}
   - {fileID: 5862228564123662572}
   theRoom: {fileID: 464165579099313182}
+  enemiesActive: 0
 --- !u!1 &5018238775173778814
 GameObject:
   m_ObjectHideFlags: 0

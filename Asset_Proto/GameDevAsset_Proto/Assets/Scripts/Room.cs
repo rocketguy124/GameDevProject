@@ -53,6 +53,8 @@ public class Room : MonoBehaviour
             }
 
             roomActive = true;
+            
+
 
             mapHider.SetActive(false);
         }
@@ -62,6 +64,20 @@ public class Room : MonoBehaviour
         if(collision.tag == "Player")
         {
             roomActive = false;
+        }
+    }
+
+    public void ActivateEnemies(List<GameObject> enemies)
+    {
+        StartCoroutine(ActivateOnDelay(enemies));
+    }
+
+    public IEnumerator ActivateOnDelay(List<GameObject> enemies)
+    {
+        yield return new WaitForSeconds(0.5f);
+        foreach (GameObject enemy in enemies)
+        {
+            enemy.gameObject.SetActive(true);
         }
     }
 }

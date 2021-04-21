@@ -36,9 +36,7 @@ public class ShopItem : MonoBehaviour
             staffSprite.sprite = theStaff.shopSprite;
             informationText.text = "Buy " + theStaff.weaponName + "\n - " + theStaff.weaponCost.ToString() + " - ";
             itemCost = theStaff.weaponCost;
-
-            Debug.Log(theStaff.damageToGive);
-            Debug.Log(theStaff.weaponCost);
+            
             staffStatsText = staffStatsImage.transform.GetChild(0).GetComponent<Text>();
             
             staffStatsText.text = theStaff.weaponName + ":\n" + "- Base DMG: " + theStaff.damageToGive +"\n" +  "- Fire Rate: "+ theStaff.timeBetweenShots;

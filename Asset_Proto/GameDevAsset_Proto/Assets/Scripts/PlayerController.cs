@@ -177,6 +177,7 @@ public class PlayerController : MonoBehaviour, IHasCooldown
                 {
                     activeMovespeed = dodgeSpeed;
                     dodgeCounter = dodgeLength;
+                    //gameObject.layer = LayerMask.GetMask(12);
                     bodyAnim.SetTrigger("Dodge");
                     PlayerHealthController.instance.MakeInvincible(dodgeInvincTime);
                     AudioManager.instance.PlaySFX(playerDodgeSound);

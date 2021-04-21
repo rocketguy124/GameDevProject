@@ -7872,6 +7872,7 @@ GameObject:
   - component: {fileID: 2066627588}
   - component: {fileID: 2066627590}
   - component: {fileID: 2066627589}
+  - component: {fileID: 2066627591}
   m_Layer: 10
   m_Name: TheBossBody
   m_TagString: Boss
@@ -7945,6 +7946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 260900260471a99429c041456f86825e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inCombat: 0
   currentHealth: 1000
   deathFX: {fileID: 4715327413259860823, guid: 9423933ea33e8b94b9abf409f895a63c, type: 3}
   levelExit: {fileID: 783490844}
@@ -8264,6 +8266,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeBeforeAffected: 0
   IsStopped: 0
+--- !u!114 &2066627591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066627584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdd404672fd3301438b7fa95c66f4bd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageToGive: 1
 --- !u!1 &192847650112812913
 GameObject:
   m_ObjectHideFlags: 0

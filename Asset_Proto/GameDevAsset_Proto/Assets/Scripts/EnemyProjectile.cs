@@ -47,7 +47,7 @@ public class EnemyProjectile : MonoBehaviour
         }
         if (!timemanager.TimeIsStopped)
         {
-            theRB.velocity = direction * speed * Time.deltaTime;
+            theRB.velocity = (direction.normalized * speed);
             if (enemyAnim != null)
             {
                 enemyAnim.enabled = true;

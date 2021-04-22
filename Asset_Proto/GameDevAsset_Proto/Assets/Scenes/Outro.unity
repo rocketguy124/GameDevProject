@@ -1703,14 +1703,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2029647453}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b8543f68cd11814ba83b45549d4eaa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitForAnyKey: 2
+  waitForAnyKey: 36
   anyKeyText: {fileID: 151697641}
-  mainMenuScene: TutLevel
+  mainMenuScene: MainMenu
+  isOutro: 1
 --- !u!114 &2029647459
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,6 +10,8 @@ public class VictoryScreen : MonoBehaviour
     public GameObject anyKeyText;
 
     public string mainMenuScene;
+
+    public bool isOutro;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,19 +29,22 @@ public class VictoryScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(waitForAnyKey > 0)
+        if (!isOutro)
         {
-            waitForAnyKey -= Time.deltaTime;
-            if(waitForAnyKey <= 0)
+            if (waitForAnyKey > 0)
             {
-                anyKeyText.SetActive(true);
+                waitForAnyKey -= Time.deltaTime;
+                if (waitForAnyKey <= 0)
+                {
+                    anyKeyText.SetActive(true);
+                }
             }
-        }
-        else
-        {
-            if (Input.anyKeyDown)
+            else
             {
-                SceneManager.LoadScene(mainMenuScene);
+                if (Input.anyKeyDown)
+                {
+                    SceneManager.LoadScene(mainMenuScene);
+                }
             }
         }
     }

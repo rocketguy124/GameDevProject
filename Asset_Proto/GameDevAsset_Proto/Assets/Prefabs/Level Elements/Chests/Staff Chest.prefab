@@ -203,6 +203,8 @@ MonoBehaviour:
   - {fileID: 1007257234843871144, guid: 76d150b47403d6945bedcea82b772d48, type: 3}
   - {fileID: 8138164626641857669, guid: 4333a5d488ea4dc43bf00a41ec602e3f, type: 3}
   - {fileID: 368518058518215397, guid: ef67594970af98d428c845e982ec01f8, type: 3}
+  - {fileID: 368518058518215397, guid: 47231cd70f4ac654fa1f13ab8d23521e, type: 3}
+  - {fileID: 368518058518215397, guid: 2baa058d79e5f304cb738a70c86a9d75, type: 3}
   theSR: {fileID: 0}
   chestOpen: {fileID: 21300000, guid: d3ad72bc7e7600f4da11b59c4ae283eb, type: 3}
   theAnim: {fileID: 0}

@@ -34,7 +34,7 @@ public class ShopItem : MonoBehaviour
             theStaff = potentialStaffs[staffSelect];
 
             staffSprite.sprite = theStaff.shopSprite;
-            informationText.text = "Buy " + theStaff.weaponName + "\n - " + theStaff.weaponCost.ToString() + " - ";
+            informationText.text = "Buy " + theStaff.weaponName + "\n - " + theStaff.weaponCost.ToString() + " Gold - ";
             itemCost = theStaff.weaponCost;
             
             staffStatsText = staffStatsImage.transform.GetChild(0).GetComponent<Text>();

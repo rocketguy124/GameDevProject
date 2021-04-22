@@ -75,6 +75,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buyingMessage: {fileID: 427420575}
   staffStatsImage: {fileID: 2426003356556881635}
+  staffStatsText: {fileID: 0}
   isHealthRestore: 0
   isHealthUpgrade: 0
   isWeapon: 1
@@ -87,6 +88,8 @@ MonoBehaviour:
   - {fileID: 2901676985002912247, guid: 13cebac4f837b254f97b8f4c4d50fccd, type: 3}
   - {fileID: 5705844313641187454, guid: fe650949e8ae2bc4089dd466b6b20566, type: 3}
   - {fileID: 67299303852828989, guid: 67c16847c0d760440b06ffbfe1ddaf9a, type: 3}
+  - {fileID: 67299303852828989, guid: 74cacb728dca3404e9c84d12577d1455, type: 3}
+  - {fileID: 67299303852828989, guid: ebf72528e9b734840a54a0dd4c42352e, type: 3}
   staffSprite: {fileID: 2028940506}
   informationText: {fileID: 731772323}
 --- !u!1 &427420575
@@ -933,6 +936,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buyingMessage: {fileID: 1246686320580017826}
   staffStatsImage: {fileID: 0}
+  staffStatsText: {fileID: 0}
   isHealthRestore: 1
   isHealthUpgrade: 0
   isWeapon: 0
@@ -1018,6 +1022,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buyingMessage: {fileID: 1246686320759995189}
   staffStatsImage: {fileID: 0}
+  staffStatsText: {fileID: 0}
   isHealthRestore: 0
   isHealthUpgrade: 1
   isWeapon: 0
@@ -2410,6 +2415,7 @@ MonoBehaviour:
   openWhenEnemiesCleared: 0
   enemies: []
   theRoom: {fileID: 0}
+  enemiesActive: 0
 --- !u!61 &665525606175907005
 BoxCollider2D:
   m_ObjectHideFlags: 0

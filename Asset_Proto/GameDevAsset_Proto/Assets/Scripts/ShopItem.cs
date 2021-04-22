@@ -39,7 +39,7 @@ public class ShopItem : MonoBehaviour
             
             staffStatsText = staffStatsImage.transform.GetChild(0).GetComponent<Text>();
             
-            staffStatsText.text = theStaff.weaponName + ":\n" + "- Base DMG: " + theStaff.damageToGive +"\n" +  "- Fire Rate: "+ theStaff.timeBetweenShots;
+            staffStatsText.text = theStaff.weaponName + ":\n" + "- Base DMG: " + theStaff.damageToGive +"\n" +  "- Fire Rate: "+ (1/theStaff.timeBetweenShots).ToString("n2");
         }
     }
 

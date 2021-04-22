@@ -260,6 +260,7 @@ public class PlayerController : MonoBehaviour, IHasCooldown
         foreach(Staff theStaff in availableStaffs)
         {
             theStaff.gameObject.SetActive(false);
+            Debug.Log(theStaff.gameObject.name + theStaff.gameObject.activeSelf);
         }
 
         availableStaffs[currentStaff].gameObject.SetActive(true);

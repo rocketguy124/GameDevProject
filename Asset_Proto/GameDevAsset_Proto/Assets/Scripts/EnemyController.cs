@@ -232,6 +232,15 @@ public class EnemyController : MonoBehaviour
 
                 enemyAnim.enabled = true;
                 //Animation
+                if(moveDirection.x >= 0)
+                {
+                    theBody.transform.localScale = new Vector3(1f, 1f, 1f);
+                }
+                if(moveDirection.x < 0)
+                {
+                    theBody.transform.localScale = new Vector3(-1f, 1f, 1f);
+
+                }
                 if (moveDirection != Vector3.zero)
                 {
                     enemyAnim.SetBool("isMoving", true);

@@ -565,7 +565,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 6553215055142025110}
   m_HandleRect: {fileID: 0}
@@ -1147,6 +1147,8 @@ MonoBehaviour:
   theRB: {fileID: 0}
   moveSpeed: 2
   theBody: {fileID: 8934991611514433930}
+  isActive: 0
+  hasBeenRevealed: 0
   canSpawnMore: 0
   spawnedMob: {fileID: 0}
   shouldChase: 1
@@ -1219,7 +1221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdd404672fd3301438b7fa95c66f4bd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageToGive: 1
+  DamageToGive: 2
 --- !u!1 &8934991611514433943
 GameObject:
   m_ObjectHideFlags: 0

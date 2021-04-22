@@ -690,6 +690,7 @@ RectTransform:
   - {fileID: 827771159}
   - {fileID: 8452518120768406586}
   - {fileID: 8452518121168340976}
+  - {fileID: 4396662290020972880}
   m_Father: {fileID: 7609719158295583064}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3906,6 +3907,167 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 513410930189764314}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2437100773408328622
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1306529145}
+    m_Modifications:
+    - target: {fileID: 2077926563692530976, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_Text
+      value: Resume
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077926563692530976, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077926563692530976, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 2a0bc93c131c8824bae0995eba88c0d6,
+        type: 3}
+    - target: {fileID: 2077926563692530978, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_Name
+      value: Resume Button Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077926563837080313, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_Name
+      value: 'Resume Button '
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077926563837080318, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077926563837080318, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077926563837080318, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077926563837080318, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077926563837080318, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077926563837080318, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077926563837080318, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077926563837080318, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077926563837080318, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077926563837080318, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077926563837080318, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077926563837080318, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -763.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077926563837080318, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077926563837080318, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 11.46991
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077926563837080318, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0.48153687
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077926563837080318, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.7286458
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077926563837080318, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.45000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077926563837080318, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.99218756
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077926563837080318, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.53729635
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077926563837080318, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077926563837080318, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077926563837080319, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7609719158295583067}
+    - target: {fileID: 2077926563837080319, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Resume
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077926563837080319, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aa5e6efc815cb6c408175148ad1e553b, type: 3}
+--- !u!224 &4396662290020972880 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2077926563837080318, guid: aa5e6efc815cb6c408175148ad1e553b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2437100773408328622}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3896967230503881123
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4328,7 +4490,7 @@ PrefabInstance:
     - target: {fileID: 2077926563692530976, guid: aa5e6efc815cb6c408175148ad1e553b,
         type: 3}
       propertyPath: m_Text
-      value: Resume
+      value: Stuck
       objectReference: {fileID: 0}
     - target: {fileID: 2077926563692530976, guid: aa5e6efc815cb6c408175148ad1e553b,
         type: 3}
@@ -4341,15 +4503,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 12800000, guid: 2a0bc93c131c8824bae0995eba88c0d6,
         type: 3}
+    - target: {fileID: 2077926563692530976, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077926563692530976, guid: aa5e6efc815cb6c408175148ad1e553b,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.72823006
+      objectReference: {fileID: 0}
     - target: {fileID: 2077926563692530978, guid: aa5e6efc815cb6c408175148ad1e553b,
         type: 3}
       propertyPath: m_Name
-      value: Resume Button Text
+      value: Stuck Button Text
       objectReference: {fileID: 0}
     - target: {fileID: 2077926563837080313, guid: aa5e6efc815cb6c408175148ad1e553b,
         type: 3}
       propertyPath: m_Name
-      value: Resume Button
+      value: Stuck Button
       objectReference: {fileID: 0}
     - target: {fileID: 2077926563837080318, guid: aa5e6efc815cb6c408175148ad1e553b,
         type: 3}
@@ -4464,7 +4636,7 @@ PrefabInstance:
     - target: {fileID: 2077926563837080319, guid: aa5e6efc815cb6c408175148ad1e553b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Resume
+      value: Stuck
       objectReference: {fileID: 0}
     - target: {fileID: 2077926563837080319, guid: aa5e6efc815cb6c408175148ad1e553b,
         type: 3}

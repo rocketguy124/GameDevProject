@@ -232,6 +232,8 @@ MonoBehaviour:
   theRB: {fileID: 0}
   moveSpeed: 3
   theBody: {fileID: 1315633854011834812}
+  isActive: 0
+  hasBeenRevealed: 0
   canSpawnMore: 0
   spawnedMob: {fileID: 0}
   shouldChase: 0
@@ -533,7 +535,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 6668140063397026469}
   m_HandleRect: {fileID: 0}

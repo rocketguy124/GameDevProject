@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class DamagePlayerOnContact : MonoBehaviour
 {
-    public int DamageToGive = 1;
+    public int DamageToGive = 2;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        DamageToGive += DifficultySettingModifier.instance.damageModifier;
     }
 
     // Update is called once per frame

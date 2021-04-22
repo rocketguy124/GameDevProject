@@ -487,6 +487,7 @@ MonoBehaviour:
   mainCam: {fileID: 1681528890}
   bigMapCam: {fileID: 577060970}
   isBossRoom: 0
+  isTutRoom: 0
 --- !u!114 &1681528893
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -117,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   theRB: {fileID: 0}
-  DamageToGive: 1
+  DamageToGive: 2
   enemyProjectileImpactSound: 22
   TimeBeforeAffected: 0
   enemyProjectileTimeBody: {fileID: 777131672156037260}

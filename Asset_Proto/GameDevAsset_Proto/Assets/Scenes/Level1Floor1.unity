@@ -492,6 +492,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7609719159022200395, guid: da9a050a0e5db694fa279feab41e6d05,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7609719159253615417, guid: da9a050a0e5db694fa279feab41e6d05,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -938,8 +943,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ae90aa1570b1b4fbf7cc808452db82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 5
-  maxHealth: 5
+  currentHealth: 10
+  maxHealth: 10
   currentGold: 0
 --- !u!4 &1992369756
 Transform:
@@ -1184,6 +1189,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 351026909939927535, guid: fc1933ed09a421e458679db48809a296,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 4843169518683124707, guid: fc1933ed09a421e458679db48809a296,
         type: 3}
       propertyPath: m_Name

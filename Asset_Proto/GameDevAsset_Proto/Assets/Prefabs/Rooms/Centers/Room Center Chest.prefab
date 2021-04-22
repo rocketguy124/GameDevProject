@@ -2833,6 +2833,7 @@ MonoBehaviour:
   openWhenEnemiesCleared: 0
   enemies: []
   theRoom: {fileID: 0}
+  enemiesActive: 0
 --- !u!1001 &354463942314744342
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2840,6 +2841,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 833783791692007932}
     m_Modifications:
+    - target: {fileID: 3155829638625671111, guid: 7e1e1bf20a066e6469cff7e77054c393,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 3155829638642845688, guid: 7e1e1bf20a066e6469cff7e77054c393,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2899,6 +2905,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Staff Chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155829638642845693, guid: 7e1e1bf20a066e6469cff7e77054c393,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155829639559295639, guid: 7e1e1bf20a066e6469cff7e77054c393,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155829639865318028, guid: 7e1e1bf20a066e6469cff7e77054c393,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e1e1bf20a066e6469cff7e77054c393, type: 3}

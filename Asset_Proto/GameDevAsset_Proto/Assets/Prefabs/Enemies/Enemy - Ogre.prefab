@@ -611,6 +611,7 @@ GameObject:
   - component: {fileID: 4701100559315973085}
   - component: {fileID: 4701100559315973082}
   - component: {fileID: 5558394604878627864}
+  - component: {fileID: -4414371346140228313}
   m_Layer: 10
   m_Name: Enemy - Ogre
   m_TagString: Enemy
@@ -697,6 +698,8 @@ MonoBehaviour:
   theRB: {fileID: 0}
   moveSpeed: 2
   theBody: {fileID: 4701100560487889940}
+  isActive: 0
+  hasBeenRevealed: 0
   canSpawnMore: 1
   spawnedMob: {fileID: 1027563318058313452, guid: 8d1305b3f3d74af45ad961cb3bdf92d5,
     type: 3}
@@ -758,6 +761,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeBeforeAffected: 0
   IsStopped: 0
+--- !u!114 &-4414371346140228313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4701100559315973086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdd404672fd3301438b7fa95c66f4bd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageToGive: 2
 --- !u!1 &4701100560487889929
 GameObject:
   m_ObjectHideFlags: 0
@@ -1408,7 +1424,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 7722430314889225166}
   m_HandleRect: {fileID: 0}

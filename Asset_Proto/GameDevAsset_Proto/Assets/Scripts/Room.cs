@@ -64,6 +64,7 @@ public class Room : MonoBehaviour
         if(collision.tag == "Player")
         {
             roomActive = false;
+            OpenDoors();
         }
     }
 

@@ -7,7 +7,7 @@ public class EnemyProjectile : MonoBehaviour
     public float speed;
     public Rigidbody2D theRB;
 
-    public int DamageToGive = 1;
+    public int DamageToGive = 2;
 
     private Vector3 direction;
     [Header("Sound")]
@@ -35,6 +35,7 @@ public class EnemyProjectile : MonoBehaviour
 
         direction = PlayerController.instance.transform.position - transform.position;
         direction.Normalize();
+        DamageToGive += DifficultySettingModifier.instance.damageModifier;
     }
 
     // Update is called once per frame

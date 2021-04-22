@@ -29,4 +29,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Victory.unity
     guid: 234987a66611c834e91ddbef06d872bd
+  - enabled: 1
+    path: Assets/Scenes/CoolEnding.unity
+    guid: 10284d3397941054ab1553aa323e97f9
+  - enabled: 1
+    path: Assets/Scenes/GoodEnding.unity
+    guid: 38978f62f853a084abf43f68056c13f4
+  - enabled: 1
+    path: Assets/Scenes/BadEnding.unity
+    guid: 5594e95c9712ee643bdbb696e62c1e4e
   m_configObjects: {}

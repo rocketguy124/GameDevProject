@@ -143,7 +143,9 @@ public class EnemyController : MonoBehaviour
                         {
                             if (!hasSpawned)
                             {
-                                Instantiate(spawnedMob, firePoint.position, firePoint.rotation);
+                                EnemyController mobController = Instantiate(spawnedMob, firePoint.position, firePoint.rotation).GetComponent<EnemyController>();
+                                mobController.gameObject.SetActive(true);
+                                mobController.isActive = true;
                                 Instantiate(deathPoof, firePoint.position, firePoint.rotation);
                                 hasSpawned = true;
                             }

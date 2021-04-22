@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossProjectile : MonoBehaviour
 {
     public float speed;
-    public int DamageToGive = 1;
+    public int DamageToGive = 2;
 
 
     private Vector3 direction;
@@ -32,6 +32,8 @@ public class BossProjectile : MonoBehaviour
         theRB = GetComponent<Rigidbody2D>();
         direction = transform.right;
         direction.Normalize();
+
+        DamageToGive += DifficultySettingModifier.instance.damageModifier;
     }
 
     // Update is called once per frame

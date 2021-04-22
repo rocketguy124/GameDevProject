@@ -138,4 +138,9 @@ public class UIController : MonoBehaviour
     {
         LevelManager.instance.PauseUnPause();
     }
+
+    public void Stuck()
+    {
+        PlayerController.instance.gameObject.transform.position = new Vector3(0, 0, 0);
+    }
 }

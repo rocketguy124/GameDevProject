@@ -298,6 +298,10 @@ public class PlayerController : MonoBehaviour, IHasCooldown
         {
             UIController.instance.bossHealthBar.gameObject.SetActive(false);
         }
+        if (collision.name == "TutCameraTrigger")
+        {
+           // CameraController.instance.ChangeCameraTarget();
+        }
     }
 
     private void UseItem(Item item)

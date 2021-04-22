@@ -60,7 +60,7 @@ public class PlayerHealthController : MonoBehaviour
         if (invincCount <= 0)
         {
 
-            currentHealth--;
+            currentHealth-= dmgToGive;
 
             GameObject hitText = Instantiate(damageTextPrefab, PlayerController.instance.transform.position, transform.rotation);
             hitText.transform.GetChild(0).GetComponent<TextMeshPro>().SetText(dmgToGive.ToString());
